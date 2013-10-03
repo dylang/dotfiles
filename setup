@@ -135,17 +135,17 @@ pass "Prezto Installed Successfully"
 # set default shell to "Zsh"
 ################################################################################
 
-TARGET_SHELL=zsh
-TARGET_SHELL_PATH=$(command -v $TARGET_SHELL)
+DEFAULT_SHELL=zsh
+DEFAULT_SHELL_PATH=$(command -v $DEFAULT_SHELL)
 
-say "About to set set default shell to $TARGET_SHELL"
+say "About to set set default shell to $DEFAULT_SHELL"
 
-[[ -e $TARGET_SHELL_PATH ]] || fail "$TARGET_SHELL does not seem to be available...aborting!"
+[[ -e $DEFAULT_SHELL_PATH ]] || fail "$DEFAULT_SHELL does not seem to be available...aborting!"
 
-if [[ current_shell == $TARGET_SHELL_PATH ]]; then
-  pass "Current shell is already set to ($TARGET_SHELL_PATH)...nothing to do!"
+if [[ current_shell == $DEFAULT_SHELL_PATH ]]; then
+  pass "Current shell is already set to ($DEFAULT_SHELL_PATH)...nothing to do!"
 else
-  chsh -s $TARGET_SHELL_PATH  || fail "Unable to set shell to $TARGET_SHELL_PATH"
+  chsh -s $DEFAULT_SHELL_PATH  || fail "Unable to set shell to $DEFAULT_SHELL_PATH"
 fi
 
 ################################################################################
