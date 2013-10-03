@@ -10,11 +10,17 @@
 # 
 # This is meant to be invoked via:
 # % bash < <(curl -s https://raw.github.com/wilmoore/dotfiles/master/setup)
-#  
-#!/usr/bin/env sh
 ################################################################################
 
 set -e
+
+################################################################################
+# configuration
+################################################################################
+
+DOTFILES_CLONE_URL='https://github.com/wilmoore/dotfiles.git'
+TARGET="$HOME/.dotfiles"
+BACKUP="$HOME/.backups/dotfiles"
 
 ################################################################################
 # output functions
@@ -37,14 +43,6 @@ fail () {
   echo ''
   exit
 }
-
-################################################################################
-# variables
-################################################################################
-
-DOTFILES_CLONE_URL='https://github.com/wilmoore/dotfiles.git'
-TARGET="$HOME/.dotfiles"
-BACKUP="$HOME/.backups/dotfiles"
 
 ################################################################################
 # helper functions
@@ -112,8 +110,10 @@ done
 ################################################################################
 # setup prezto (assume prezto configuration files are linked with dotfiles)
 #
-# see: http://blog.jr0cket.co.uk/2013/09/hey-prezto-zsh-for-command-line-heaven.html
-# see: https://github.com/sorin-ionescu/prezto
+# Links:
+# 
+#  - http://blog.jr0cket.co.uk/2013/09/hey-prezto-zsh-for-command-line-heaven.html
+#  - https://github.com/sorin-ionescu/prezto
 ################################################################################
 
 say "Preparing to install Prezto"
