@@ -7,5 +7,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Source nvm
+################################################################################
+# programming virtual environments & version managers
+################################################################################
+
+# nvm (Node.js)
 source $HOME/.nvm/nvm.sh
