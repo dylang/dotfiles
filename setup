@@ -1,0 +1,149 @@
+################################################################################
+# Install dotfiles
+# Wil Moore III <wil.moore@wilmoore.com>
+# 
+# Tasks: 
+#
+#  - clone dotfiles repo
+#  - locate and link linkable files, make backups for existing, non-link files
+#  - setup prezto (assume prezto configuration files are linked with dotfiles)
+# 
+# This is meant to be invoked via:
+# % bash < <(curl -s https://raw.github.com/wilmoore/dotfiles/master/setup)
+#  
+#!/usr/bin/env sh
+################################################################################
+
+set -e
+
+################################################################################
+# output functions
+################################################################################
+
+say () {
+  printf "\r [ \033[00;34m..\033[0m ] $1\n"
+}
+
+ask () {
+  printf "\r [ \033[0;33m??\033[0m ] $1\n"
+}
+
+pass () {
+  printf "\r\033[2K [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+################################################################################
+# variables
+################################################################################
+
+DOTFILES_CLONE_URL='https://github.com/wilmoore/dotfiles.git'
+TARGET="$HOME/.dotfiles"
+BACKUP="$HOME/.backups/dotfiles"
+
+################################################################################
+# helper functions
+################################################################################
+
+#
+# does file exist as a real file (non-link)
+#
+
+real_file_exists () {
+  [[ -f "$1" && ! -L "$1" ]] && return 0
+  return 1
+}
+
+#
+# list linkable dotfiles
+#
+
+linkable_dotfiles () {
+  find "$1" -maxdepth 1 -mindepth 1 \
+    ! -name '*.d'   \
+    ! -name 'setup' \
+    ! -name '*.swp' \
+    ! -name '*.md'  \
+    ! -name '.git*'
+}
+
+################################################################################
+# clone dotfiles repo
+################################################################################
+
+if [[ -d $TARGET ]]; then
+  say "dotfiles directory: ($TARGET) exists; skipping clone"
+else
+  git clone $DOTFILES_CLONE_URL $TARGET || fail "unable to clone dotfiles"
+fi
+
+################################################################################
+# locate and link linkable files, make backups for existing, non-link files
+################################################################################
+
+for rcfile in $(linkable_dotfiles $TARGET); do
+  mkdir -p $BACKUP
+
+  linkpath="$HOME/$(basename $rcfile)"
+  backpath="$BACKUP/$(basename $rcfile)-$(date '+%Y%m%d%H%M%S')"
+
+  if real_file_exists "$linkpath"; then
+    say "REAL FILE EXISTS: ($linkpath) -- creating backup file ($backpath)."
+    cp "$linkpath" "$backpath"
+  fi
+
+  ln -fs "$rcfile" "$linkpath" && say "created link: ($linkpath)"
+done
+
+################################################################################
+# setup prezto (assume prezto configuration files are linked with dotfiles)
+#
+# see: http://blog.jr0cket.co.uk/2013/09/hey-prezto-zsh-for-command-line-heaven.html
+# see: https://github.com/sorin-ionescu/prezto
+################################################################################
+
+say "Preparing to install Prezto"
+
+if [[ -d "$HOME/.zprezto" ]]; then
+  say "directory: ("$HOME/.zprezto") exists; skipping clone"
+else
+  git clone git clone --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezto" || fail "unable to clone Prezto"
+fi
+
+say "Preparing to update Prezto"
+
+cd "$HOME/.zprezto"
+git pull
+
+pass "Prezto Installed Successfully"
+
+################################################################################
+# set default shell to "Zsh"
+################################################################################
+
+# check current shell on OSX via: dscl localhost -read /Local/Default/Users/$USER shell | awk '{ print $NF }'
+# todo: make this idempotent
+# todo: more granular error handling
+
+function set_shell() {
+  local target_shell=$(command -v $1)
+
+  chsh -s $target_shell 2>/dev/null
+
+  return $?
+}
+
+#say "About to set set default shell to zsh"
+#set_shell zsh || fail "Unable to set shell to zsh"
+#pass "Successfully set shell to zsh"
+
+################################################################################
+# fin
+################################################################################
+
+pass "dotfile installation completed successfully."
