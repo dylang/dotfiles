@@ -9,7 +9,7 @@
 #  - setup prezto (assume prezto configuration files are linked with dotfiles)
 # 
 # This is meant to be invoked via:
-# % bash < <(curl -s https://raw.github.com/wilmoore/dotfiles/master/setup)
+# bash < <(curl -s https://raw.github.com/wilmoore/dotfiles/master/setup)
 ################################################################################
 
 set -e
