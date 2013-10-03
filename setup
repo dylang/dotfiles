@@ -127,7 +127,7 @@ fi
 say "Preparing to update Prezto"
 
 cd "$HOME/.zprezto"
-git pull
+git pull 2>/dev/null || fail "failed to update $(pwd)"
 
 pass "Prezto Installed Successfully"
 
