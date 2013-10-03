@@ -162,8 +162,9 @@ fi
 
 say "Setting permissions on ($SSH_PATH)"
 
-chmod 700 $SSH_PATH   || fail "command failed: chmod 700 $SSH_PATH"
-chmod 600 $SSH_PATH/* || fail "comamnd failed: chmod 600 $SSH_PATH/*"
+chmod 700 $SSH_PATH    || fail "command failed: chmod 700 $SSH_PATH"
+touch $SSH_PATH/config || fail "comamnd failed: touch $SSH_PATH/config"
+chmod 600 $SSH_PATH/*  || fail "comamnd failed: chmod 600 $SSH_PATH/*"
 
 ################################################################################
 # fin
