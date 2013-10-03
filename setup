@@ -70,15 +70,6 @@ linkable_dotfiles () {
     ! -name '.git*'
 }
 
-#
-# report own current shell
-#
-
-current_shell () {
-  # OSX specific (todo: make this less osx specific)
-  dscl localhost -read /Local/Default/Users/$USER shell | awk '{ print $NF }'
-}
-
 ################################################################################
 # clone dotfiles repo
 ################################################################################
@@ -138,11 +129,14 @@ pass "Prezto Installed Successfully"
 DEFAULT_SHELL=zsh
 DEFAULT_SHELL_PATH=$(command -v $DEFAULT_SHELL)
 
+# OSX specific (todo: make this less osx specific)
+CURRENT_SHELL_PATH=$(dscl localhost -read /Local/Default/Users/$USER shell | awk '{ print $NF }')
+
 say "Preparing to set set default shell to $DEFAULT_SHELL"
 
 [[ -e $DEFAULT_SHELL_PATH ]] || fail "$DEFAULT_SHELL does not seem to be available...aborting!"
 
-if [[ current_shell == $DEFAULT_SHELL_PATH ]]; then
+if [[ $CURRENT_SHELL_PATH == $DEFAULT_SHELL_PATH ]]; then
   pass "Current shell is already set to ($DEFAULT_SHELL_PATH)...nothing to do!"
 else
   chsh -s $DEFAULT_SHELL_PATH  || fail "Unable to set shell to $DEFAULT_SHELL_PATH"
