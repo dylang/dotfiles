@@ -75,9 +75,18 @@ linkable_dotfiles () {
 ################################################################################
 
 if [[ -d $TARGET ]]; then
-  say "dotfiles directory: ($TARGET) exists; skipping clone"
+  say "dotfiles directory exists; preparing to update [$TARGET]"
+
+  cd $TARGET || fail "command failed: [cd $TARGET]...aborting!"
+  
+  say "current directory: $(pwd)"
+  
+  git pull 2>/dev/null || fail "command failed: [git pull]...aborting!"
+  
+  say "dotfiles repository successfully updated"
 else
   git clone $DOTFILES_CLONE_URL $TARGET || fail "unable to clone dotfiles"
+  say "dotfiles repository successfully cloned"
 fi
 
 ################################################################################
