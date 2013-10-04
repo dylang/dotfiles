@@ -85,7 +85,7 @@ if [[ -d $TARGET ]]; then
   
   say "dotfiles repository successfully updated"
 else
-  git clone $DOTFILES_CLONE_URL $TARGET || fail "unable to clone dotfiles"
+  git clone --recursive $DOTFILES_CLONE_URL $TARGET || fail "unable to clone dotfiles"
   say "dotfiles repository successfully cloned"
 fi
 
