@@ -21,3 +21,6 @@ source $HOME/.aliases
 # nvm (Node.js)
 source $HOME/.nvm/nvm.sh
 
+# chruby (Ruby)
+source $(brew --prefix chruby)/share/chruby/chruby.sh
+
