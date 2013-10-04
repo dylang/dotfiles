@@ -14,46 +14,21 @@ fi
 # editors & pagers
 ################################################################################
 
+#
+# default editor
+#
+
 export EDITOR='vim -p'
 export VISUAL='vim -p'
+
+#
+# default pager
+#
+
 export PAGER='vimpager'
 
-################################################################################
-# Language
-################################################################################
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
-fi
-
-################################################################################
-# Paths
-################################################################################
-
-typeset -gU cdpath fpath mailpath path
-
-# Set the the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
-
 #
-# Set the list of directories that Zsh searches for programs.
-#
-
-path=(
-  $HOME/.homebrew/bin
-  /usr/local/{bin,sbin}
-  $path
-)
-
-manpath=(
-  $HOME/.homebrew/share/man
-  $manpath
-)
-
-#
-# Less
+# `less` configuration
 #
 
 # Set the default Less options.
@@ -66,9 +41,49 @@ if (( $+commands[lesspipe.sh] )); then
   export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
 fi
 
+################################################################################
+# language
+################################################################################
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
+################################################################################
+# Paths
+################################################################################
+
+typeset -gU cdpath fpath mailpath path
+
 #
-# Temporary Files
+# paths searched for manual pages
 #
+
+MANPATH=$HOME/.homebrew/share/man:$MANPATH
+
+#
+# paths searched for programs
+#
+
+path=(
+  $HOME/.homebrew/bin
+  /usr/local/{bin,sbin}
+  $path
+)
+
+#
+# paths searched to auto-cd into
+#
+
+cdpath=(
+  $HOME
+  $HOME/Documents/projects
+  $cdpath
+)
+
+################################################################################
+# temporary Files
+################################################################################
 
 if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$USER"
