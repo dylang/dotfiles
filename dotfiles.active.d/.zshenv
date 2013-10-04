@@ -3,6 +3,38 @@
 #
 
 ################################################################################
+# Paths
+################################################################################
+
+typeset -gU cdpath fpath mailpath path
+
+#
+# paths searched for manual pages
+#
+
+MANPATH=$HOME/.homebrew/share/man:$MANPATH
+
+#
+# paths searched for programs
+#
+
+path=(
+  $HOME/.homebrew/bin
+  /usr/local/{bin,sbin}
+  $path
+)
+
+#
+# paths searched to auto-cd into
+#
+
+cdpath=(
+  $HOME
+  $HOME/Documents/projects
+  $cdpath
+)
+
+################################################################################
 # browser
 ################################################################################
 
@@ -48,38 +80,6 @@ fi
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
-
-################################################################################
-# Paths
-################################################################################
-
-typeset -gU cdpath fpath mailpath path
-
-#
-# paths searched for manual pages
-#
-
-MANPATH=$HOME/.homebrew/share/man:$MANPATH
-
-#
-# paths searched for programs
-#
-
-path=(
-  $HOME/.homebrew/bin
-  /usr/local/{bin,sbin}
-  $path
-)
-
-#
-# paths searched to auto-cd into
-#
-
-cdpath=(
-  $HOME
-  $HOME/Documents/projects
-  $cdpath
-)
 
 ################################################################################
 # temporary Files
