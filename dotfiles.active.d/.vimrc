@@ -18,9 +18,10 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle "jQuery"
 Bundle "gh:vim-ruby/vim-ruby"
 Bundle "rails.vim"
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'tpope/vim-dispatch'
-Bundle 'airblade/vim-gitgutter'
+Bundle "jnwhiteh/vim-golang"
+Bundle "tpope/vim-dispatch"
+Bundle "airblade/vim-gitgutter"
+Bundle "editorconfig"
 
 " see: http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Bundle 'godlygeek/tabular'
