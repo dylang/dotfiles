@@ -29,7 +29,7 @@
   # use vim as preferred editor and start editing at first line when invoked
   editor            = vim -pc ':normal gg'
 
-  excludesfile      = ~/.gitignore
+  excludesfile      = ~/.gitignore-global
 
   filemode          = true
 
