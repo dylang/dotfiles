@@ -21,6 +21,5 @@ source $HOME/.aliases
 # nvm (Node.js)
 source $HOME/.nvm/nvm.sh
 
-# chruby (Ruby)
-source $(brew --prefix chruby)/share/chruby/chruby.sh
-
+# chruby (Ruby) and default to latest ruby 2.x
+source $(brew --prefix chruby)/share/chruby/chruby.sh && chruby 2
