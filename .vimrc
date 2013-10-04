@@ -16,7 +16,20 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Programming
 Bundle "jQuery"
+Bundle "gh:vim-ruby/vim-ruby"
 Bundle "rails.vim"
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'tpope/vim-dispatch'
+Bundle 'airblade/vim-gitgutter'
+
+" see: http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+Bundle 'godlygeek/tabular'
+Bundle 'scrooloose/nerdtree'
+Bundle 'mattn/gist-vim'
+Bundle 'epmatsw/ag.vim'
+Bundle 'tpope/vim-commentary'
+Bundle 'tejr/vim-tmux'
+Bundle 'ervandew/supertab'
 
 " Syntax highlight
 Bundle "Markdown"
@@ -38,11 +51,6 @@ Bundle "Align"
 " FuzzyFinder
 Bundle "L9"
 Bundle "FuzzyFinder"
-
-" Ack
-Bundle "ack.vim"
-noremap <LocalLeader># 	"ayiw:Ack <C-r>a<CR>
-vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
 
 " tComment
 Bundle "tComment"
@@ -67,4 +75,179 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+
+
+
+
+""""""""""""""""""""""""""""""
+"" files, backups and undo
+""""""""""""""""""""""""""""""
+ 
+" Turn backup off, since most stuff is in source control
+set nobackup
+set nowb
+set noswapfile
+
+
+""""""""""""""""""""""""""""""
+"" mouse
+""""""""""""""""""""""""""""""
+ 
+set mouse=a
+set ttym=xterm2
+
+
+""""""""""""""""""""""""""""""
+"" keyboard
+""""""""""""""""""""""""""""""
+ 
+" <Ctrl-C> -- copy selected to system clipboard (see: " http://vim.wikia.com/wiki/Quick_yank_and_paste)
+vmap <C-C> "*y
+
+" <Ctrl-A> -- visually select all and copy to system clipboard
+map <C-A> ggvG$"*y<C-o><C-o>
+
+" ,cp copies path to clipboard
+nmap <leader>cp :let @" = expand("%:p")<cr><cr>
+
+
+""""""""""""""""""""""""""""""
+"" formatting
+""""""""""""""""""""""""""""""
+ 
+" do not wrap
+set nowrap
+
+""""""""""""""""""""""""""""""
+"" colors and Fonts
+""""""""""""""""""""""""""""""
+
+" color schemes
+Bundle "altercation/vim-colors-solarized"
+
+" Enable syntax highlighting
+syntax enable
+ 
+colorscheme solarized
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+set t_Co=256
+set background=dark
+ 
+" Set extra options when running in GUI mode
+if has("gui_running")
+  set guioptions-=T
+  set guioptions+=e
+  set t_Co=256
+  set guitablabel=%M\ %t
+endif
+ 
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+ 
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+""""""""""""""""""""""""""""""
+"" testing
+""""""""""""""""""""""""""""""
+
+" <leader>t runs tests (make test)
+map <leader>t :make test<cr>
+
+""""""""""""""""""""""""""""""
+"" editing
+""""""""""""""""""""""""""""""
+
+" <leader>pp toggles paste mode
+map <leader>pp :setlocal paste!<cr>
+
+" <leader>ss toggles spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" <leader>hh turns off search highlight
+map <leader>hh :noh<cr>
+
+""""""""""""""""""""""""""""""
+"" splits / windows
+""""""""""""""""""""""""""""""
+
+" instead of ctrl-w then one of {j,k,h,l}, just ctrl-{j,k,h,l}:
+" http://robots.thoughtbot.com/post/48275867281/vim-splits-move-faster-and-more-naturally
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+""""""""""""""""""""""""""""""
+"" tabs
+""""""""""""""""""""""""""""""
+
+" Maximum number of tabs to display
+set tabpagemax=50
+
+" Useful mappings for managing tabs (Vim 7 specific mappings)
+if version >= 700
+  nnoremap <CS-Right> :tabnext<cr>
+  nnoremap <CS-Left>  :tabprevious<cr>
+  nnoremap <C-n>      :tabnew<cr>
+  nnoremap <C-t>      :tabclose<cr>
+  nnoremap <C-m>      :tabmove<cr>
+endif
+
+" opens a new tab edit the file whose name is under or after the cursor
+:map gt :tabedit <cfile><CR>
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Specify the behavior when switching between buffers
+try
+  set switchbuf=useopen,usetab,newtab
+  set stal=2
+catch
+endtry
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+" Remember info about open buffers on close
+set viminfo^=%
+
+""""""""""""""""""""""""""""""
+"" fugitive.vim
+""""""""""""""""""""""""""""""
+
+" Github domains configuration
+let g:fugitive_github_domains = ['http://github.webapps.rr.com']
+
+""""""""""""""""""""""""""""""
+"" open all the things
+""""""""""""""""""""""""""""""
+
+" open url under cursor
+map gu :!open <cfile><cr>
+
+""""""""""""""""""""""""""""""
+"" git
+""""""""""""""""""""""""""""""
+
+" [goto] Git Conflict
+nmap gc /^<<<<<<< HEAD$<cr>
+
+""""""""""""""""""""""""""""""
+"" nerdtree.vim
+""""""""""""""""""""""""""""""
+
+let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks=1
+let NERDTreeWinSize=26
 
