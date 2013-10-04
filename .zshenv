@@ -41,8 +41,10 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 #
 
+# homebrew first
+path=($HOME/.homebrew/bin $path)
+
 path=(
-  $HOME/.homebrew/bin
   $(brew --prefix chruby)/share/chruby/chruby.sh
   /usr/local/{bin,sbin}
   $path
