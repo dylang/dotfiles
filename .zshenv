@@ -2,33 +2,33 @@
 # Defines environment variables.
 #
 
-#
-# Browser
-#
+################################################################################
+# browser
+################################################################################
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
 
-#
-# Editors
-#
+################################################################################
+# editors & pagers
+################################################################################
 
-export EDITOR='nano'
-export VISUAL='nano'
-export PAGER='less'
+export EDITOR='vim -p'
+export VISUAL='vim -p'
+export PAGER='vimpager'
 
-#
+################################################################################
 # Language
-#
+################################################################################
 
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
-#
+################################################################################
 # Paths
-#
+################################################################################
 
 typeset -gU cdpath fpath mailpath path
 
@@ -37,9 +37,13 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
+#
 # Set the list of directories that Zsh searches for programs.
+#
+
 path=(
   $HOME/.homebrew/bin
+  $(brew --prefix chruby)/share/chruby/chruby.sh
   /usr/local/{bin,sbin}
   $path
 )
