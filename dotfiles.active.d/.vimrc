@@ -114,7 +114,16 @@ set nowrap
 syntax enable
 
 """"""""""""""""""""""""""""""
-"" colors scheme
+"" color in terminal
+""""""""""""""""""""""""""""""
+
+" when not running in GUI mode
+if !has('gui_running')
+  set t_Co=256
+endif
+
+""""""""""""""""""""""""""""""
+"" color scheme
 """"""""""""""""""""""""""""""
 
 " download color scheme
@@ -127,14 +136,18 @@ let g:solarized_termtrans=1
 set background=dark
 
 """"""""""""""""""""""""""""""
-"" gui options
+"" fonts
+""""""""""""""""""""""""""""""
+
+" when running in GUI mode
+if has("gui_running")
+  set guifont=Anonymous\ Pro\ for\ Powerline:h18
+endif
+ 
+""""""""""""""""""""""""""""""
+"" gui (general)
 """"""""""""""""""""""""""""""
  
-" when not running in GUI mode
-if !has('gui_running')
-  set t_Co=256
-endif
-
 " when running in GUI mode
 if has("gui_running")
   set guioptions-=T
@@ -240,7 +253,7 @@ let g:fugitive_github_domains = ['http://github.webapps.rr.com']
 """"""""""""""""""""""""""""""
 "" open all the things
 """"""""""""""""""""""""""""""
-
+" 
 " open url under cursor
 map gu :!open <cfile><cr>
 
@@ -266,27 +279,15 @@ nmap <leader>f :NERDTreeFind<cr>
 """"""""""""""""""""""""""""""
 "" statusline
 """"""""""""""""""""""""""""""
-Bundle 'itchyny/lightline.vim'
+
+set ttimeoutlen = 50
+
+""""""""""""""""""""""""""""""
+"" statusline
+""""""""""""""""""""""""""""""
+Bundle 'bling/vim-airline'
 
 set laststatus=2
 
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&readonly?"x":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
+let g:airline_powerline_fonts = 1
 
