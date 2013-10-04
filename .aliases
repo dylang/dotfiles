@@ -8,3 +8,10 @@
 
 alias less=$PAGER
 alias zless=$PAGER
+
+#
+# vim
+#
+
+# update vundle bundles
+alias vundle.update='vim +BundleInstall +qall'
