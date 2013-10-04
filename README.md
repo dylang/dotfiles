@@ -1,3 +1,4 @@
 Installed vundle with:
 
-	git submodule add https://github.com/gmarik/vundle.git .vim/bundle/vundle
+	mkdir -p ~/.dotfiles/.vim/bundle
+	git submodule add https://github.com/gmarik/vundle.git ~/.dotfiles/.vim/bundle/vundle
