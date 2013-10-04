@@ -11,15 +11,51 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-" non github repos
-Bundle 'git://git.wincent.com/command-t.git'
+
+" Programming
+Bundle "jQuery"
+Bundle "rails.vim"
+
+" Syntax highlight
+Bundle "Markdown"
+
+" Git integration
+Bundle "git.zip"
+Bundle "fugitive.vim"
+
+" (HT|X)ml tool
+Bundle "ragtag.vim"
+
+" Utility
+Bundle "repeat.vim"
+Bundle "surround.vim"
+Bundle "SuperTab"
+Bundle "file-line"
+Bundle "Align"
+
+" FuzzyFinder
+Bundle "L9"
+Bundle "FuzzyFinder"
+
+" Ack
+Bundle "ack.vim"
+noremap <LocalLeader># 	"ayiw:Ack <C-r>a<CR>
+vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
+
+" tComment
+Bundle "tComment"
+nnoremap // :TComment<CR>
+vnoremap // :TComment<CR>
+
+" Command-T
+Bundle "git://git.wincent.com/command-t.git"
+let g:CommandTMatchWindowAtTop=1 " show window at top
+
+" Navigation
+Bundle "http://github.com/gmarik/vim-visual-star-search.git"
+
 
 filetype plugin indent on     " required!
 "
