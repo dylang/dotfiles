@@ -1,3 +1,11 @@
+[submodule "dotfiles.active.d/.vim/bundle/editorconfig-vim"]
+	path = dotfiles.active.d/.vim/bundle/editorconfig-vim
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/lightline.vim"]
+	path = dotfiles.active.d/.vim/bundle/lightline.vim
+	ignore = all
+
 [submodule "dotfiles.active.d/.vim/bundle/tComment"]
 	path = dotfiles.active.d/.vim/bundle/tComment
 	ignore = all
