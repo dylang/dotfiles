@@ -44,6 +44,11 @@ path=(
   $path
 )
 
+manpath=(
+  $HOME/.homebrew/share/man
+  $path
+)
+
 #
 # Less
 #
