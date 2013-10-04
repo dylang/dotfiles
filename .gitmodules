@@ -1,0 +1,32 @@
+[submodule "dotfiles.active.d/.vim/bundle/tComment"]
+	path = dotfiles.active.d/.vim/bundle/tComment
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/Align"]
+	path = dotfiles.active.d/.vim/bundle/Align
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/FuzzyFinder"]
+	path = dotfiles.active.d/.vim/bundle/FuzzyFinder
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/L9"]
+	path = dotfiles.active.d/.vim/bundle/L9
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/fugitive.vim"]
+	path = dotfiles.active.d/.vim/bundle/fugitive.vim
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/ragtag.vim"]
+	path = dotfiles.active.d/.vim/bundle/ragtag.vim
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/rails.vim"]
+	path = dotfiles.active.d/.vim/bundle/rails.vim
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/surround.vim"]
+	path = dotfiles.active.d/.vim/bundle/surround.vim
+	ignore = all
+
