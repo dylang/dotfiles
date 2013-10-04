@@ -21,16 +21,8 @@ Bundle "rails.vim"
 Bundle "jnwhiteh/vim-golang"
 Bundle "tpope/vim-dispatch"
 Bundle "airblade/vim-gitgutter"
-Bundle "editorconfig"
-
-" see: http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/nerdtree'
-Bundle 'mattn/gist-vim'
+Bundle "editorconfig-vim"
 Bundle 'epmatsw/ag.vim'
-Bundle 'tpope/vim-commentary'
-Bundle 'tejr/vim-tmux'
-Bundle 'ervandew/supertab'
 
 " Syntax highlight
 Bundle "Markdown"
@@ -38,6 +30,7 @@ Bundle "Markdown"
 " Git integration
 Bundle "git.zip"
 Bundle "fugitive.vim"
+Bundle 'mattn/gist-vim'
 
 " (HT|X)ml tool
 Bundle "ragtag.vim"
@@ -48,6 +41,7 @@ Bundle "surround.vim"
 Bundle "SuperTab"
 Bundle "file-line"
 Bundle "Align"
+Bundle 'godlygeek/tabular'
 
 " FuzzyFinder
 Bundle "L9"
@@ -65,7 +59,6 @@ let g:CommandTMatchWindowAtTop=1 " show window at top
 " Navigation
 Bundle "http://github.com/gmarik/vim-visual-star-search.git"
 
-
 filetype plugin indent on     " required!
 "
 " Brief help
@@ -77,9 +70,6 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
 
-
-
-
 """"""""""""""""""""""""""""""
 "" files, backups and undo
 """"""""""""""""""""""""""""""
@@ -89,14 +79,12 @@ set nobackup
 set nowb
 set noswapfile
 
-
 """"""""""""""""""""""""""""""
 "" mouse
 """"""""""""""""""""""""""""""
  
 set mouse=a
 set ttym=xterm2
-
 
 """"""""""""""""""""""""""""""
 "" keyboard
@@ -111,7 +99,6 @@ map <C-A> ggvG$"*y<C-o><C-o>
 " ,cp copies path to clipboard
 nmap <leader>cp :let @" = expand("%:p")<cr><cr>
 
-
 """"""""""""""""""""""""""""""
 "" formatting
 """"""""""""""""""""""""""""""
@@ -120,32 +107,52 @@ nmap <leader>cp :let @" = expand("%:p")<cr><cr>
 set nowrap
 
 """"""""""""""""""""""""""""""
-"" colors and Fonts
+"" syntax highlighting
 """"""""""""""""""""""""""""""
 
-" color schemes
+" enable/disable syntax highlighting
+syntax enable
+
+""""""""""""""""""""""""""""""
+"" colors scheme
+""""""""""""""""""""""""""""""
+
+" download color scheme
 Bundle "altercation/vim-colors-solarized"
 
-" Enable syntax highlighting
-syntax enable
- 
+" configure color scheme
 colorscheme solarized
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-set t_Co=256
 set background=dark
+
+""""""""""""""""""""""""""""""
+"" gui options
+""""""""""""""""""""""""""""""
  
-" Set extra options when running in GUI mode
+" when not running in GUI mode
+if !has('gui_running')
+  set t_Co=256
+endif
+
+" when running in GUI mode
 if has("gui_running")
   set guioptions-=T
   set guioptions+=e
-  set t_Co=256
   set guitablabel=%M\ %t
 endif
  
-" Set utf8 as standard encoding and en_US as the standard language
+""""""""""""""""""""""""""""""
+"" encodings
+""""""""""""""""""""""""""""""
+
+ " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
  
+""""""""""""""""""""""""""""""
+"" file types
+""""""""""""""""""""""""""""""
+
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -247,8 +254,39 @@ nmap gc /^<<<<<<< HEAD$<cr>
 """"""""""""""""""""""""""""""
 "" nerdtree.vim
 """"""""""""""""""""""""""""""
+Bundle 'scrooloose/nerdtree'
 
 let NERDTreeShowHidden=1
 let NERDTreeShowBookmarks=1
 let NERDTreeWinSize=26
+
+" <leader>f invokes NERDTreeFind
+nmap <leader>f :NERDTreeFind<cr>
+
+""""""""""""""""""""""""""""""
+"" statusline
+""""""""""""""""""""""""""""""
+Bundle 'itchyny/lightline.vim'
+
+set laststatus=2
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&readonly?"x":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
 
