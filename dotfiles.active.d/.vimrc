@@ -8,6 +8,17 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
+""""""""""""""""""""""""""""""
+"" syntax highlighting
+""""""""""""""""""""""""""""""
+
+" enable/disable syntax highlighting
+syntax enable
+
+""""""""""""""""""""""""""""""
+"" common bundles
+""""""""""""""""""""""""""""""
+
 " My Bundles here:
 "
 " original repos on github
@@ -23,6 +34,12 @@ Bundle "tpope/vim-dispatch"
 Bundle "airblade/vim-gitgutter"
 Bundle "editorconfig-vim"
 Bundle 'epmatsw/ag.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'mmalecki/vim-node.js'
+Bundle 'JavaScript-Indent'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'tpope/vim-eunuch'
 
 " Syntax highlight
 Bundle "Markdown"
@@ -40,8 +57,8 @@ Bundle "repeat.vim"
 Bundle "surround.vim"
 Bundle "SuperTab"
 Bundle "file-line"
-Bundle "Align"
-Bundle 'godlygeek/tabular'
+Bundle "godlygeek/tabular"
+Bundle "kien/ctrlp.vim"
 
 " FuzzyFinder
 Bundle "L9"
@@ -52,23 +69,17 @@ Bundle "tComment"
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
-" Command-T
-Bundle "git://git.wincent.com/command-t.git"
-let g:CommandTMatchWindowAtTop=1 " show window at top
-
 " Navigation
 Bundle "http://github.com/gmarik/vim-visual-star-search.git"
 
 filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+
+""""""""""""""""""""""""""""""
+"" search
+""""""""""""""""""""""""""""""
+
+set hlsearch
+set incsearch
 
 """"""""""""""""""""""""""""""
 "" files, backups and undo
@@ -107,13 +118,6 @@ nmap <leader>cp :let @" = expand("%:p")<cr><cr>
 set nowrap
 
 """"""""""""""""""""""""""""""
-"" syntax highlighting
-""""""""""""""""""""""""""""""
-
-" enable/disable syntax highlighting
-syntax enable
-
-""""""""""""""""""""""""""""""
 "" color in terminal
 """"""""""""""""""""""""""""""
 
@@ -126,14 +130,14 @@ endif
 "" color scheme
 """"""""""""""""""""""""""""""
 
-" download color scheme
-Bundle "altercation/vim-colors-solarized"
+" vim colorscheme pack
+Bundle 'flazz/vim-colorschemes'
 
 " configure color scheme
-colorscheme solarized
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 set background=dark
+colorscheme solarized
 
 """"""""""""""""""""""""""""""
 "" fonts
@@ -277,17 +281,76 @@ let NERDTreeWinSize=26
 nmap <leader>f :NERDTreeFind<cr>
 
 """"""""""""""""""""""""""""""
+"" timeout
+""""""""""""""""""""""""""""""
+
+set ttimeoutlen=50
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimrc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"
+" Reload vimrc whenever a vim config file is modified
+"
+
+augroup reload_vimrc
+  autocmd!
+  autocmd bufwritepost $MYVIMRC source $MYVIMRC
+  autocmd bufwritepost ~/.vim/* source $MYVIMRC
+augroup END
+
+"
+" key bindings
+"
+
+" $MYVIMRC reload
+nmap <Leader>rc :source $MYVIMRC<CR>
+
+" $MYVIMRC open buffer for editing in new tab/buffer
+nmap <Leader>rt :tabnew $MYVIMRC<CR>
+
+" $MYVIMRC open buffer for editing in current tab/buffer
+nmap <Leader>re :e $MYVIMRC<CR>
+
+""""""""""""""""""""""""""""""
 "" statusline
 """"""""""""""""""""""""""""""
 
-set ttimeoutlen = 50
-
-""""""""""""""""""""""""""""""
-"" statusline
-""""""""""""""""""""""""""""""
 Bundle 'bling/vim-airline'
 
 set laststatus=2
 
 let g:airline_powerline_fonts = 1
+
+
+set wildmenu " show command complition menu
+set wildmode=list:longest,full
+set scrolloff=3 " begin scrolling N lines earlier
+
+""""""""""""""""""""""""""""""
+" File types settings
+""""""""""""""""""""""""""""""
+
+set number
+
+"sane editing (tabs)
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+" convert all typed tabs to spaces
+set expandtab
+
+" CSS (tab width 2 chr)
+autocmd FileType css set et
+autocmd FileType css set sw=2
+autocmd FileType css set ts=2
+autocmd FileType css set sts=2
+
+" JavaScript (tab width 2 chr)
+autocmd FileType javascript set et
+autocmd FileType javascript set sw=2
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set sts=2
 

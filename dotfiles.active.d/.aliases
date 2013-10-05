@@ -14,4 +14,4 @@ alias zless=$PAGER
 #
 
 # update vundle bundles
-alias vundle.update='vim +BundleInstall +qall'
+alias vundle.update='vim +BundleClean +BundleInstall +qall'
