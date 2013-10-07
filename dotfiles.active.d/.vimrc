@@ -67,6 +67,10 @@ Bundle "tpope/vim-eunuch"
 Bundle "skammer/vim-css-color"
 Bundle "groenewege/vim-less"
 Bundle "terryma/vim-expand-region"
+Bundle "Tagbar"
+Bundle "michaeljsmith/vim-indent-object"
+Bundle "mru.vim"
+Bundle "YankRing.vim"
 
 " Syntax highlight
 Bundle "Markdown"
@@ -82,6 +86,7 @@ Bundle "ragtag.vim"
 " Utility
 Bundle "repeat.vim"
 Bundle "surround.vim"
+Bundle 'matchit.zip'
 Bundle "SuperTab"
 Bundle "file-line"
 Bundle "godlygeek/tabular"

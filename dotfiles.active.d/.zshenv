@@ -30,7 +30,8 @@ path=(
 
 cdpath=(
   $HOME
-  $HOME/Documents/projects
+  $HOME/projects
+  $HOME/projects/active
   $cdpath
 )
 
