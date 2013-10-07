@@ -43,12 +43,6 @@ syntax enable
 "" common bundles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" My Bundles here:
-"
-" original repos on github
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-
 " Programming
 Bundle "jQuery"
 Bundle "gh:vim-ruby/vim-ruby"
@@ -84,8 +78,10 @@ Bundle 'mattn/gist-vim'
 Bundle "ragtag.vim"
 
 " Utility
+Bundle 'Lokaltog/vim-easymotion'
 Bundle "repeat.vim"
 Bundle "surround.vim"
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'matchit.zip'
 Bundle "SuperTab"
 Bundle "file-line"
@@ -385,4 +381,5 @@ autocmd FileType javascript set sts=2
 "
 
 " https://github.com/terryma/vim-multiple-cursors
+" http://www.youtube.com/watch?v=Umb59mMvCxA
 Bundle "terryma/vim-multiple-cursors"
