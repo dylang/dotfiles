@@ -1,3 +1,23 @@
+[submodule "dotfiles.active.d/.vim/bundle/Tagbar"]
+	path = dotfiles.active.d/.vim/bundle/Tagbar
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/YankRing.vim"]
+	path = dotfiles.active.d/.vim/bundle/YankRing.vim
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/matchit.zip"]
+	path = dotfiles.active.d/.vim/bundle/matchit.zip
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/vim-expand-region"]
+	path = dotfiles.active.d/.vim/bundle/vim-expand-region
+	ignore = all
+
+[submodule "dotfiles.active.d/.vim/bundle/vim-multiple-cursors"]
+	path = dotfiles.active.d/.vim/bundle/vim-multiple-cursors
+	ignore = all
+
 [submodule "dotfiles.active.d/.vim/bundle/editorconfig-vim"]
 	path = dotfiles.active.d/.vim/bundle/editorconfig-vim
 	ignore = all
