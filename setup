@@ -19,8 +19,8 @@ set -e
 ################################################################################
 
 DOTFILES_CLONE_URL='https://github.com/wilmoore/dotfiles.git'
-TARGET="$HOME/.dotfiles/dotfiles.active.d"
-BACKUP="$HOME/.backups/dotfiles"
+TARGET="$HOME/.dotfiles/active"
+BACKUP="$HOME/.backup/dotfiles"
 
 ################################################################################
 # output functions
