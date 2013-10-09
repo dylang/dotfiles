@@ -1,18 +1,47 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" general
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"
+" Be iMproved
+"
 
-" let Vundle manage Vundle
-" required! 
+set nocompatible
+
+"
+" filetype off -- required for vundle to function properly
+"
+
+filetype off
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"
+" configure vundle paths
+"
+
+" do only when `vim_starting`:
+" mitigates weird reloading errors (i.e. unable to find color schemes)
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/vundle/
+  call vundle#rc()
+endif
+
+" let Vundle manage Vundle (required)
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
-"
-" original repos on github
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" syntax highlighting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" enable/disable syntax highlighting
+syntax enable
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" common bundles
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Programming
 Bundle "jQuery"
@@ -22,7 +51,20 @@ Bundle "jnwhiteh/vim-golang"
 Bundle "tpope/vim-dispatch"
 Bundle "airblade/vim-gitgutter"
 Bundle "editorconfig-vim"
-Bundle 'epmatsw/ag.vim'
+Bundle "epmatsw/ag.vim"
+Bundle "pangloss/vim-javascript"
+Bundle "kchmck/vim-coffee-script"
+Bundle "mmalecki/vim-node.js"
+Bundle "JavaScript-Indent"
+Bundle "jelera/vim-javascript-syntax"
+Bundle "tpope/vim-eunuch"
+Bundle "skammer/vim-css-color"
+Bundle "groenewege/vim-less"
+Bundle "terryma/vim-expand-region"
+Bundle "Tagbar"
+Bundle "michaeljsmith/vim-indent-object"
+Bundle "mru.vim"
+Bundle "YankRing.vim"
 
 " Syntax highlight
 Bundle "Markdown"
@@ -36,12 +78,18 @@ Bundle 'mattn/gist-vim'
 Bundle "ragtag.vim"
 
 " Utility
+Bundle 'Lokaltog/vim-easymotion'
 Bundle "repeat.vim"
 Bundle "surround.vim"
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'matchit.zip'
 Bundle "SuperTab"
 Bundle "file-line"
-Bundle "Align"
-Bundle 'godlygeek/tabular'
+Bundle "godlygeek/tabular"
+Bundle "kien/ctrlp.vim"
+
+" server (nginx)
+Bundle "nginx.vim"
 
 " FuzzyFinder
 Bundle "L9"
@@ -52,43 +100,37 @@ Bundle "tComment"
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
-" Command-T
-Bundle "git://git.wincent.com/command-t.git"
-let g:CommandTMatchWindowAtTop=1 " show window at top
-
 " Navigation
 Bundle "http://github.com/gmarik/vim-visual-star-search.git"
 
 filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" search
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set hlsearch
+set incsearch
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" files, backups and undo
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  
 " Turn backup off, since most stuff is in source control
 set nobackup
 set nowb
 set noswapfile
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" mouse
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  
 set mouse=a
 set ttym=xterm2
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" keyboard
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  
 " <Ctrl-C> -- copy selected to system clipboard (see: " http://vim.wikia.com/wiki/Quick_yank_and_paste)
 vmap <C-C> "*y
@@ -96,57 +138,51 @@ vmap <C-C> "*y
 " <Ctrl-A> -- visually select all and copy to system clipboard
 map <C-A> ggvG$"*y<C-o><C-o>
 
-" ,cp copies path to clipboard
-nmap <leader>cp :let @" = expand("%:p")<cr><cr>
-
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" formatting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  
 " do not wrap
 set nowrap
 
-""""""""""""""""""""""""""""""
-"" syntax highlighting
-""""""""""""""""""""""""""""""
-
-" enable/disable syntax highlighting
-syntax enable
-
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" color in terminal
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " when not running in GUI mode
 if !has('gui_running')
   set t_Co=256
 endif
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" color scheme
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" download color scheme
-Bundle "altercation/vim-colors-solarized"
+" vim colorscheme pack
+Bundle 'flazz/vim-colorschemes'
 
 " configure color scheme
-colorscheme solarized
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 set background=dark
+colorscheme solarized
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" fonts
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" when running in GUI mode
+"
+" gui font (i.e. MacVIM)
+"
+
+" should match the setting in your terminal for consistency
 if has("gui_running")
   set guifont=Anonymous\ Pro\ for\ Powerline:h18
 endif
  
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" gui (general)
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  
 " when running in GUI mode
 if has("gui_running")
@@ -155,30 +191,30 @@ if has("gui_running")
   set guitablabel=%M\ %t
 endif
  
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" encodings
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
  " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
  
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" file types
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" testing
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " <leader>t runs tests (make test)
 map <leader>t :make test<cr>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" editing
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " <leader>pp toggles paste mode
 map <leader>pp :setlocal paste!<cr>
@@ -189,32 +225,18 @@ map <leader>ss :setlocal spell!<cr>
 " <leader>hh turns off search highlight
 map <leader>hh :noh<cr>
 
-""""""""""""""""""""""""""""""
-"" splits / windows
-""""""""""""""""""""""""""""""
-
-" instead of ctrl-w then one of {j,k,h,l}, just ctrl-{j,k,h,l}:
-" http://robots.thoughtbot.com/post/48275867281/vim-splits-move-faster-and-more-naturally
-
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" tabs
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Maximum number of tabs to display
 set tabpagemax=50
 
 " Useful mappings for managing tabs (Vim 7 specific mappings)
 if version >= 700
-  nnoremap <CS-Right> :tabnext<cr>
-  nnoremap <CS-Left>  :tabprevious<cr>
-  nnoremap <C-n>      :tabnew<cr>
-  nnoremap <C-t>      :tabclose<cr>
-  nnoremap <C-m>      :tabmove<cr>
+  nnoremap <C-t> :tabnew<cr>
+  nnoremap <C-l> :tabnext<cr>
+  nnoremap <C-h> :tabprevious<cr>
 endif
 
 " opens a new tab edit the file whose name is under or after the cursor
@@ -243,30 +265,30 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" fugitive.vim
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Github domains configuration
 let g:fugitive_github_domains = ['http://github.webapps.rr.com']
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" open all the things
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 
 " open url under cursor
 map gu :!open <cfile><cr>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" git
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " [goto] Git Conflict
 nmap gc /^<<<<<<< HEAD$<cr>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" nerdtree.vim
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'scrooloose/nerdtree'
 
 let NERDTreeShowHidden=1
@@ -276,18 +298,88 @@ let NERDTreeWinSize=26
 " <leader>f invokes NERDTreeFind
 nmap <leader>f :NERDTreeFind<cr>
 
-""""""""""""""""""""""""""""""
-"" statusline
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" timeout
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set ttimeoutlen = 50
+set ttimeoutlen=50
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimrc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"
+" Reload vimrc whenever a vim config file is modified
+"
+
+augroup reload_vimrc
+  autocmd!
+  autocmd bufwritepost $MYVIMRC source $MYVIMRC
+  autocmd bufwritepost ~/.vim/* source $MYVIMRC
+augroup END
+
+"
+" key bindings
+"
+
+" $MYVIMRC reload
+nmap <Leader>rc :source $MYVIMRC<CR>
+
+" $MYVIMRC open buffer for editing in new tab/buffer
+nmap <Leader>rt :tabnew $MYVIMRC<CR>
+
+" $MYVIMRC open buffer for editing in current tab/buffer
+nmap <Leader>re :e $MYVIMRC<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" statusline
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Bundle 'bling/vim-airline'
 
 set laststatus=2
 
 let g:airline_powerline_fonts = 1
 
+
+set wildmenu " show command complition menu
+set wildmode=list:longest,full
+set scrolloff=3 " begin scrolling N lines earlier
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File types settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set number
+
+"sane editing (tabs)
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+" convert all typed tabs to spaces
+set expandtab
+
+" CSS (tab width 2 chr)
+autocmd FileType css set et
+autocmd FileType css set sw=2
+autocmd FileType css set ts=2
+autocmd FileType css set sts=2
+
+" JavaScript (tab width 2 chr)
+autocmd FileType javascript set et
+autocmd FileType javascript set sw=2
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set sts=2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" sublime (multiple selections) mode
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"
+" install 'vim-multiple-cursors' plugin
+"
+
+" https://github.com/terryma/vim-multiple-cursors
+" http://www.youtube.com/watch?v=Umb59mMvCxA
+Bundle "terryma/vim-multiple-cursors"

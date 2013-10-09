@@ -2,6 +2,12 @@
 # My Personal Git Configuration -- `git config --global -e`
 # Wil Moore III <wil.moore@wilmoore.com>
 #
+# This is meant to be cherry picked from so if you don't
+# need or want everything in here, just take what you want
+# The only caveat is the `git sync*` aliases. You'll want
+# to grab all three since that is the one group of alias
+# where one alias references another.
+#
 # Always up-to-date @:
 # - http://git.io/gopyOg (https://gist.github.com/4179015)
 #
@@ -176,11 +182,14 @@
   # stage file after resolving a merge conflict (like svn, hg)
   resolve           = stage --
 
-  # fetch and rebase from upstream/master then push current branch to origin
-  sync              = !git pull --no-rebase --ff upstream master && git push -u origin +HEAD
+  # a more convenient way to say `git sync-rebase`
+  sync              = !git sync-rebase
 
-  # same as `git sync` but also rebases
-  sync-rebase       = !git pull --rebase --ff upstream master && git push -u origin +HEAD
+  # fetch and rebase, first from origin/HEAD, then from upstream/HEAD; finally, push (force) to origin/HEAD
+  sync-rebase       = !git pull --rebase --ff origin HEAD && git pull --rebase --ff upstream master && git push -u origin +HEAD
+
+  # same as `git sync`; however, do not rebase and does not force push
+  sync-no-rebase    = !git pull --no-rebase --ff origin HEAD && git pull --no-rebase --ff upstream master && git push -u origin HEAD
 
   # decorated graph view of one liner summarized commits from all branches. (inspired by git-extras)
   tree              = log --all --graph --decorate --oneline --simplify-by-decoration
@@ -197,7 +206,10 @@
 ############################################################
 # changelog
 #
-# **2013.08.31**
+# **2013.10.07**
+# - changed my mind yet again about `sync`, `sync-rebase`, and `sync-no-rebase`.
+#
+## **2013.08.31**
 # - add `conflicted` and `edit-conflicted`.
 #
 # **2013.08.13**
