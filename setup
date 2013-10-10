@@ -31,10 +31,6 @@ say () {
   printf "\r [ \033[00;34m..\033[0m ] $1\n"
 }
 
-ask () {
-  printf "\r [ \033[0;33m??\033[0m ] $1\n"
-}
-
 pass () {
   printf "\r\033[2K [ \033[00;32mOK\033[0m ] $1\n"
 }
@@ -116,7 +112,7 @@ for rcfile in $(linkable_dotfiles $SOURCE); do
     cp "$linkpath" "$backpath"
   fi
 
-  ln -nfs "$rcfile" "$linkpath" && say "created link: ($linkpath)"
+  ln -nfs "$rcfile" "$linkpath" && pass "created link: ($linkpath)"
 done
 
 ################################################################################
