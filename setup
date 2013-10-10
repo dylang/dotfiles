@@ -19,7 +19,8 @@ set -e
 ################################################################################
 
 DOTFILES_CLONE_URL='https://github.com/wilmoore/dotfiles.git'
-TARGET="$HOME/.dotfiles/active"
+DOTFILES_HOME_PATH="$HOME/.dotfiles"
+TARGET="$DOTFILES_HOME_PATH/active"
 BACKUP="$HOME/.backup/dotfiles"
 
 ################################################################################
@@ -84,7 +85,7 @@ if [[ -d $TARGET ]]; then
   
   say "dotfiles repository successfully updated"
 else
-  git clone --recursive $DOTFILES_CLONE_URL $TARGET || fail "unable to clone dotfiles"
+  git clone --recursive $DOTFILES_CLONE_URL $DOTFILES_HOME_PATH || fail "unable to clone dotfiles"
   say "dotfiles repository successfully cloned"
 fi
 
