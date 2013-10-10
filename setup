@@ -83,7 +83,7 @@ if [[ -d $DOTFILES_ROOT_PATH ]]; then
   
   say "current directory: $(pwd)"
   
-  git pull 2>/dev/null || fail "command failed: [git pull]...aborting!"
+  git pull || fail "command failed: [git pull]...aborting!"
   
   say "dotfiles repository successfully updated"
 else
