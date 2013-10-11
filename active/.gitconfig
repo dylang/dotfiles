@@ -182,6 +182,9 @@
   # stage file after resolving a merge conflict (like svn, hg)
   resolve           = stage --
 
+  # stage all outstanding changes found within the entire project
+  stage-everything  = add --all :/
+
   # a more convenient way to say `git sync-rebase`
   sync              = !git sync-rebase
 
