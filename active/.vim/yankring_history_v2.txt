@@ -1,0 +1,100 @@
+http://misc.flogisoft.com/bash/tip_colors_and_formatting,v
+-,v
+## # ## ### #,1
+install,v
+,V
+$APPNAME version $VERSION,v
+      echo "$APPNAME version $VERSION",V
+Inc. ,v
+Cable ,v
+Warner ,v
+Time ,v
+THISYEAR,v
+0.0.1',v
+  local THISYEAR='0.0.1',V
+VERSION,v
+  local VERSION='0.0.1',V
+2004,v
+_,v
+PROGNAME,v
+          %  ${APPNAME} --help,V
+          %  ${APPNAME} --version,V
+ ,v
+<init>,v
+         install        init,V
+Install,v
+Print the commands that would be executed, but do not execute them.,v
+         ,v
+         -o, --out <path>        Where to output generated version.js file.         -t, --template <path>   File to use as version.js template.,V
+         -p, --pre-release <id>  Pre-release identifier (i.e. FT.1, BETA.2, RC.1).         -r, --release <release> Increment this semver release segment (major, minor, patch).,V
+         -A, --no-archive        Skip building of archive (zip) file.         -f, --fetch             Fetch remote git refs (i.e. tags).,V
+      echo "Usage: $APPNAME install"      echo '',V
+          %  ${APPNAME} build.80 --template ./templates/build/version.js,V
+          %  ${APPNAME} build.80 --out ./src/javascript/framework/version.js,V
+          %  ${APPNAME} build.80 --fetch,V
+          %  ${APPNAME} build.80 --no-archive,V
+          %  ${APPNAME} build.80 --no-publish,V
+          %  ${APPNAME} build.80 --no-install,V
+build.80 --pre-release FT.1,v
+dry-run,v
+--,v
+build.80 ,v
+startTag,v
+[options],v
+cat <<USAGESTRINGUsage: ${PROGNAME} <startTag> [options]  Example:    %  ${PROGNAME} build.80    %  ${PROGNAME} build.80 --dry-run    %  ${PROGNAME} build.80 --pre-release FT.1    %  ${PROGNAME} build.80 --release minor    %  ${PROGNAME} build.80 --no-install    %  ${PROGNAME} build.80 --no-publish    %  ${PROGNAME} build.80 --no-archive    %  ${PROGNAME} build.80 --fetch    %  ${PROGNAME} build.80 --out ./src/javascript/framework/version.js    %  ${PROGNAME} build.80 --template ./templates/build/version.js    %  ${PROGNAME} --version    %  ${PROGNAME} --help  Options:   -d, --dry-run           Print the commands that would be executed, but do not execute them.   -I, --no-install        Skip installation of Node modules (i.e. semver).   -P, --no-publish        Skip publishing of branches (master, stable), and tags.   -A, --no-archive        Skip building of archive (zip) file.   -f, --fetch             Fetch remote git refs (i.e. tags).   -p, --pre-release <id>  Pre-release identifier (i.e. FT.1, BETA.2, RC.1).   -r, --release <release> Increment this semver release segment (major, minor, patch).   -o, --out <path>        Where to output generated version.js file.   -t, --template <path>   File to use as version.js template.   -v, --version           Display the version of ${PROGNAME}.   -h, --help              Display help information.----${PROGNAME}@${_VERSION}© 2004-${THISYEAR} Time Warner Cable Inc. All rights reserved.USAGESTRING,v
+~/projects/active/hnavclient/bin/hnav-release,v
+Example usage:,v
+ontap install,V
+          continue,V
+|| ,v
+' ,v
+0,v
+Pruned ,v
+'^,v
+sqE ,v
+grep ,v
+| ,v
+1 ,v
+head ,v
+null ,v
+/,v
+dev,v
+>/,v
+2,v
+" ,v
+taprepo,v
+"$,v
+repair ,v
+tap ,v
+brew ,v
+#,v
+;,v
+m,v
+1,v
+3,v
+[,v
+:,v
+$taprepo already tapped,v
+Warning: ,v
+e ,v
+echo ,v
+\,v
+          printf '',V
+\e[0;31m,v
+s,v
+%,v
+installed,v
+1.45 ,v
+ngrep,v
+|| brew tap "$taprepo",v
+          #Warning: ngrep-1.45 already installed,V
+          brew tap --repair "$taprepo" 2>/dev/null | head -1 | grep -sqE '^Pruned 0' || brew tap "$taprepo",V
+        # install,V
+        brew tap --repair "$taprepo" 2>/dev/null | head -1 | grep -sqE '^Pruned 0' || brew tap "$taprepo",V
+          brew tap     ,V
+&& ,v
+or tap,v
+"$taprepo",v
+  brew tap --repair wilmoore/homebrew-binaries 2>/dev/null | head -1 | grep -sqE '^Pruned 0' || brew tap wilmoore/homebrew-binaries,V
+      #local _MANPATH=$(php-config --man-dir),V
+      #export PATH="$_PHP_ROOT/sbin:$PATH",V
