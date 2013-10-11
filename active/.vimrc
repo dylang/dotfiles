@@ -40,6 +40,13 @@ Bundle 'gmarik/vundle'
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" clipboard
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Bundle "YankRing.vim"
+let g:yankring_history_dir = '~/.vim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" common bundles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -64,7 +71,7 @@ Bundle "terryma/vim-expand-region"
 Bundle "Tagbar"
 Bundle "michaeljsmith/vim-indent-object"
 Bundle "mru.vim"
-Bundle "YankRing.vim"
+Bundle "mattboehm/vim-unstack"
 
 " Syntax highlight
 Bundle "Markdown"
