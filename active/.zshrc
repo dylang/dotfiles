@@ -14,6 +14,9 @@ fi
 # aliases
 source $HOME/.aliases
 
+# ontap
+source $HOME/projects/active/ontap/ontap.sh
+
 ################################################################################
 # programming virtual environments & version managers
 ################################################################################

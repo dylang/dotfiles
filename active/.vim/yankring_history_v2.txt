@@ -1,100 +1,100 @@
-http://misc.flogisoft.com/bash/tip_colors_and_formatting,v
--,v
-## # ## ### #,1
-install,v
 ,V
-$APPNAME version $VERSION,v
-      echo "$APPNAME version $VERSION",V
-Inc. ,v
-Cable ,v
-Warner ,v
-Time ,v
-THISYEAR,v
-0.0.1',v
-  local THISYEAR='0.0.1',V
-VERSION,v
-  local VERSION='0.0.1',V
-2004,v
-_,v
-PROGNAME,v
-          %  ${APPNAME} --help,V
-          %  ${APPNAME} --version,V
- ,v
-<init>,v
-         install        init,V
-Install,v
-Print the commands that would be executed, but do not execute them.,v
-         ,v
-         -o, --out <path>        Where to output generated version.js file.         -t, --template <path>   File to use as version.js template.,V
-         -p, --pre-release <id>  Pre-release identifier (i.e. FT.1, BETA.2, RC.1).         -r, --release <release> Increment this semver release segment (major, minor, patch).,V
-         -A, --no-archive        Skip building of archive (zip) file.         -f, --fetch             Fetch remote git refs (i.e. tags).,V
-      echo "Usage: $APPNAME install"      echo '',V
-          %  ${APPNAME} build.80 --template ./templates/build/version.js,V
-          %  ${APPNAME} build.80 --out ./src/javascript/framework/version.js,V
-          %  ${APPNAME} build.80 --fetch,V
-          %  ${APPNAME} build.80 --no-archive,V
-          %  ${APPNAME} build.80 --no-publish,V
-          %  ${APPNAME} build.80 --no-install,V
-build.80 --pre-release FT.1,v
-dry-run,v
---,v
-build.80 ,v
-startTag,v
-[options],v
-cat <<USAGESTRINGUsage: ${PROGNAME} <startTag> [options]  Example:    %  ${PROGNAME} build.80    %  ${PROGNAME} build.80 --dry-run    %  ${PROGNAME} build.80 --pre-release FT.1    %  ${PROGNAME} build.80 --release minor    %  ${PROGNAME} build.80 --no-install    %  ${PROGNAME} build.80 --no-publish    %  ${PROGNAME} build.80 --no-archive    %  ${PROGNAME} build.80 --fetch    %  ${PROGNAME} build.80 --out ./src/javascript/framework/version.js    %  ${PROGNAME} build.80 --template ./templates/build/version.js    %  ${PROGNAME} --version    %  ${PROGNAME} --help  Options:   -d, --dry-run           Print the commands that would be executed, but do not execute them.   -I, --no-install        Skip installation of Node modules (i.e. semver).   -P, --no-publish        Skip publishing of branches (master, stable), and tags.   -A, --no-archive        Skip building of archive (zip) file.   -f, --fetch             Fetch remote git refs (i.e. tags).   -p, --pre-release <id>  Pre-release identifier (i.e. FT.1, BETA.2, RC.1).   -r, --release <release> Increment this semver release segment (major, minor, patch).   -o, --out <path>        Where to output generated version.js file.   -t, --template <path>   File to use as version.js template.   -v, --version           Display the version of ${PROGNAME}.   -h, --help              Display help information.----${PROGNAME}@${_VERSION}© 2004-${THISYEAR} Time Warner Cable Inc. All rights reserved.USAGESTRING,v
-~/projects/active/hnavclient/bin/hnav-release,v
-Example usage:,v
-ontap install,V
-          continue,V
-|| ,v
-' ,v
-0,v
-Pruned ,v
-'^,v
-sqE ,v
-grep ,v
-| ,v
-1 ,v
-head ,v
-null ,v
-/,v
-dev,v
->/,v
-2,v
-" ,v
-taprepo,v
-"$,v
-repair ,v
-tap ,v
-brew ,v
+# editor / pagerinstall viminstall macviminstall vimpagerinstall ctags# networkinginstall ngrepinstall netcat,v
+.aliases,v
+aliases,v
 #,v
-;,v
-m,v
-1,v
-3,v
-[,v
-:,v
-$taprepo already tapped,v
-Warning: ,v
-e ,v
-echo ,v
-\,v
-          printf '',V
-\e[0;31m,v
+#,V
+source $HOME/.aliases,V
+# aliases,V
+################################################################################,V
+programming virtual environments & version managers,v
+################################################################################# programming virtual environments & version managers################################################################################,v
+wilmoore/binaries,V
+tap josegonzalez/php,V
+tap homebrew/dupes,V
+homebrew/dupes,V
+homebrew/binary,V
+also ,v
+homebrew/binaryhomebrew/dupeswilmoore/binaries,V
+k:,v
+source it ,v
+put ,v
+to ,v
+free ,v
+feel ,v
+download,v
+install,v
+curl -sSL https://raw.github.com/wilmoore/ontap/master/ontap.sh -o /tmp,v
 s,v
-%,v
-installed,v
-1.45 ,v
-ngrep,v
-|| brew tap "$taprepo",v
-          #Warning: ngrep-1.45 already installed,V
-          brew tap --repair "$taprepo" 2>/dev/null | head -1 | grep -sqE '^Pruned 0' || brew tap "$taprepo",V
-        # install,V
-        brew tap --repair "$taprepo" 2>/dev/null | head -1 | grep -sqE '^Pruned 0' || brew tap "$taprepo",V
-          brew tap     ,V
-&& ,v
-or tap,v
-"$taprepo",v
-  brew tap --repair wilmoore/homebrew-binaries 2>/dev/null | head -1 | grep -sqE '^Pruned 0' || brew tap wilmoore/homebrew-binaries,V
-      #local _MANPATH=$(php-config --man-dir),V
-      #export PATH="$_PHP_ROOT/sbin:$PATH",V
+source ontap.sh,v
+    % source ontap.sh,V
+ ,v
+it,v
+Source,v
+Install,v
+$EDITOR ~/.ontaprc,v
+    % $EDITOR ~/.ontaprc,V
+`,v
+`~/.ontaprc`,v
+Run it.,v
+## Configure![](https://cloudup.com/cwHITIlHPzf+),v
+it.,v
+.,v
+What can I put into my `~/.ontaprc`?,v
+Installation,v
+service,v
+http://127.0.0.1:8092/cometd,v
+https://cloudup.com/cwHITIlHPzf,v
+- comments (i.e. `#`),V
+Example,v
+For ,v
+## What can I put into my `~/.ontaprc`?,V
+![](https://cloudup.com/cmZTLXBkeGV+),V
+## Installation,V
+Installs,v
+### Installs    % source ontap.sh,v
+[php-build]:        https://github.com/CHH/php-build[homebrew-php]:     https://github.com/josegonzalez/homebrew-php[build-php-vers]:   https://github.com/wilmoore/php-version/wiki/Building-PHP-Versions[windows-bin]:      http://windows.php.net/download[windows-port]:     https://github.com/wilmoore/php-version/issues/2[manual-build]:     https://github.com/wilmoore/php-version#compilation-recommendations[shims]:            https://github.com/sstephenson/rbenv#understanding-shims[hooks]:            https://rvm.io/workflow/hooks[opt-install]:      https://github.com/wilmoore/php-version/wiki/Installing[exploring]:        https://github.com/wilmoore/php-version/wiki/Exploring-PHP[trouble]:          https://github.com/wilmoore/php-version/wiki/Troubleshooting,V
+    # Homebrew (recommended)    source $(brew --prefix php-version)/php-version.sh && php-version 5          # non-Homebrew    source $HOME/local/php-version/php-version.sh && php-version 5Type `php-version --help` for more configuration options such as how to add extra PHP installation paths or `php-config --version` to find out which `php` version is active.## Deactivate / Uninstall1. Remove [setup](https://github.com/wilmoore/php-version#setup) configuration.2. Enter one of the following commands listed below to remove associated files.        # Homebrew (recommended)        % brew remove --force php-version        # non-Homebrew        % rm -rf $HOME/local/php-version## Having Issues?1. Copy the bug report output to your clipboard (`pbcopy` works on Mac OSX; use your OS equivalent)        % source bug-report.sh | pbcopy2. File an [issue](https://github.com/wilmoore/php-version/issues?state=open).## More Info-   [Building PHP Versions][build-php-vers]-   [Exploring PHP][exploring]-   [Troubleshooting][trouble]## Contributors```99  Wil Moore III 3  Jason P. Scharf 3  Tugdual Saunier 1  Gábor Egyed 1  Martin Lundberg```## Alternatives-   [phpbrew](https://github.com/c9s/phpbrew)-   [phpenv](https://github.com/CHH/phpenv)-   [phpenv](https://github.com/humanshell/phpenv)-   [php_version_solution](https://github.com/convissor/php_version_solution)-   [phpfarm](http://sourceforge.net/p/phpfarm/wiki/Home/)-   [GNU Stow](http://www.gnu.org/s/stow/)-   [Encap](http://www.encap.org/)-   [phpswitch](https://github.com/jubianchi/phpswitch)## Inspiration-   [n](https://github.com/visionmedia/n)-   [nvm](https://github.com/creationix/nvm)-   [rbenv](https://github.com/sstephenson/rbenv)-   [rbfu](https://github.com/hmans/rbfu)-   [ry](https://github.com/jayferd/ry),v
+Add one of the following to `$HOME/.bashrc`, `$HOME/.zshrc`, or your shell's equivalent configuration file:,V
+## Setup,V
+,V
+[Alternative (i.e. non-Homebrew) installation methods][opt-install] are documented on the wiki.,V
+    % cd !$    % curl -# -L https://github.com/wilmoore/php-version/tarball/master | tar -xz --strip 1,V
+    % mkdir -p $HOME/local/php-version # or your place of choice,V
+**cURL** (for non-OSX users or those that prefer not to use `homebrew`):,V
+    % brew tap josegonzalez/homebrew-php    % brew install php-version,V
+    % brew tap homebrew/dupes,V
+**homebrew** (recommended for OSX users),V
+## Install,V
+    * 5.4.8,V
+      5.4.0RC6      5.4.0,V
+      5.3.10      5.4.0RC8,V
+    % php-version      5.3.9,V
+php-version <version>,v
+Switch to a specific PHP version,v
+## Usage Examples,V
+-   does not attempt to manage Apache, MySQL, etc.-   does not attempt to compile, build, or install PHP.,V
+-   no [shims][], sub-shells, symlinks or `cd` [hooks][].-   we won't leave files and symlinks all over the place.,V
+formula (i.e. `git`),v
+- formula (i.e. `git`),V
+-   **tiny**: less than 150 LOC; a single function sourced via your shell's rc file.,V
+-   **configurable**: `php-version --help` for details.-   **bash and zsh** actively supported; though care has been taken such that other shells _should_ work as well.,V
+-   **snap versioning**: Use a partial version number (i.e. `php-version 5`) to automatically use the latest 5.x version.-   **per version `php.ini`**: we `export PHPRC` if a version-specific `php.ini` exists.,V
+-   PHP verions installed [into `~/.phps`][build-php-vers] are picked up automatically.-   PHP verions listed in the `$PHP_VERSIONS` shell variable are picked up automatically.,V
+-   [Homebrew installed PHP versions][homebrew-php] are picked up automatically.,V
+## Features,V
+>   this problem, [none](http://www.gnu.org/s/stow/) of the tools I've found were simple enough for me.,V
+>   While there are [smart](https://github.com/c9s/phpbrew) [alternative](https://github.com/CHH/phpenv)>   [tools](http://sourceforge.net/p/phpfarm/wiki/Home/) that attempt to [solve](https://github.com/convissor/php_version_solution),V
+**php-version** attempts to stick to the classic UNIX notion that tools should do one thing well.,V
+## Rationale,V
+-   You **NEVER** work on more than one PHP project at a time.-   You don't plan on supporting prior work that was done on other PHP versions.,V
+-   You are content with heavy handed *AMP installers.-   You are provisioning a production server so you only need a single PHP install.,V
+## This is _NOT_ for you if,V
+-   You are a developer that works on a variety of PHP projects each requiring different versions of PHP.-   You want to work on the latest PHP, but expect to support prior work that was done on older PHP versions.,V
+-   You download [pre-compiled PHP binaries for Windows][windows-bin].-   You want to run your automated tests against multiple PHP versions.,V
+Add any taps or formula you'd like to install,V
+taps,v
+- taps,V
+do,v
+![](https://cloudup.com/cwHITIlHPzf+),V
+This _IS_ for you if,v

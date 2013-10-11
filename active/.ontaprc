@@ -1,8 +1,30 @@
 # taps
-tap homebrew/dupes
 tap homebrew/binary
+tap homebrew/dupes
+tap wilmoore/binaries
 tap josegonzalez/php
 
-# formula
+# editor / pager
+install vim
+install macvim
+install vimpager
+install ctags
+
+# networking
 install ngrep
 install netcat
+
+# vcs
+install git
+
+# binaries
+install phantom-js
+  
+# utility
+install ag
+install tree
+install wget
+install tmux
+install watch
+install reattach-to-user-namespace
+
