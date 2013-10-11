@@ -1,0 +1,8 @@
+# taps
+tap homebrew/dupes
+tap homebrew/binary
+tap josegonzalez/php
+
+# formula
+install ngrep
+install netcat
