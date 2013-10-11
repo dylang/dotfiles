@@ -19,8 +19,8 @@ set -e
 ################################################################################
 
 DOTFILES_CLONE_URL='https://github.com/wilmoore/dotfiles.git'
-DOTFILES_HOME_PATH="$HOME/.dotfiles"
-TARGET="$DOTFILES_HOME_PATH/active"
+DOTFILES_ROOT_PATH="$HOME/.dotfiles"
+SOURCE="$DOTFILES_ROOT_PATH/active"
 BACKUP="$HOME/.backup/dotfiles"
 
 ################################################################################
@@ -29,10 +29,6 @@ BACKUP="$HOME/.backup/dotfiles"
 
 say () {
   printf "\r [ \033[00;34m..\033[0m ] $1\n"
-}
-
-ask () {
-  printf "\r [ \033[0;33m??\033[0m ] $1\n"
 }
 
 pass () {
@@ -74,18 +70,22 @@ linkable_dotfiles () {
 # clone dotfiles repo
 ################################################################################
 
-if [[ -d $TARGET ]]; then
-  say "dotfiles directory exists; preparing to update [$TARGET]"
+say "Preparing to clone dotfiles..."
 
-  cd $TARGET || fail "command failed: [cd $TARGET]...aborting!"
+if [[ -d $DOTFILES_ROOT_PATH ]]; then
+  say "dotfiles directory exists; preparing to update [$DOTFILES_ROOT_PATH]"
+  
+  cd $DOTFILES_ROOT_PATH || fail "command failed: [cd $DOTFILES_ROOT_PATH]...aborting!"
   
   say "current directory: $(pwd)"
   
   git pull 2>/dev/null || fail "command failed: [git pull]...aborting!"
   
+  cd -
+  
   say "dotfiles repository successfully updated"
 else
-  git clone --recursive $DOTFILES_CLONE_URL $DOTFILES_HOME_PATH || fail "unable to clone dotfiles"
+  git clone --recursive $DOTFILES_CLONE_URL $DOTFILES_ROOT_PATH || fail "unable to clone dotfiles"
   say "dotfiles repository successfully cloned"
 fi
 
@@ -93,18 +93,26 @@ fi
 # locate and link linkable files, make backups for existing, non-link files
 ################################################################################
 
-for rcfile in $(linkable_dotfiles $TARGET); do
+say "Preparing to link dotfiles..."
+
+if [[ -d $SOURCE/.git ]]; then
+  fail "dotfile source directory should not be the root of a git repository...aborting!"
+fi
+
+for rcfile in $(linkable_dotfiles $SOURCE); do
   mkdir -p $BACKUP
 
   linkpath="$HOME/$(basename $rcfile)"
   backpath="$BACKUP/$(basename $rcfile)-$(date '+%Y%m%d%H%M%S')"
+
+  say "Preparing to link ($rcfile) ==> ($linkpath)."
 
   if real_file_exists "$linkpath"; then
     say "REAL FILE EXISTS: ($linkpath) -- creating backup file ($backpath)."
     cp "$linkpath" "$backpath"
   fi
 
-  ln -fs "$rcfile" "$linkpath" && say "created link: ($linkpath)"
+  ln -nfs "$rcfile" "$linkpath" && pass "created link: ($linkpath)"
 done
 
 ################################################################################

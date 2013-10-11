@@ -58,3 +58,6 @@
 	path = active/.vim/bundle/surround.vim
 	ignore = all
 
+[submodule "active/.vim/bundle/vundle"]
+	path = active/.vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git

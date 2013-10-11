@@ -19,9 +19,10 @@ MANPATH=$HOME/.homebrew/share/man:$MANPATH
 #
 
 path=(
-  $HOME/.homebrew/bin
-  /usr/local/{bin,sbin}
-  $path
+  /usr/local/{bin,sbin}   # obviously :)
+  $HOME/.homebrew/bin     # homebrew@$HOME
+  /usr/local/heroku/bin   # heroku toolbelt
+  $path                   # system defaults
 )
 
 #
