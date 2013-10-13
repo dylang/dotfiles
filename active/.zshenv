@@ -3,16 +3,10 @@
 #
 
 ################################################################################
-# Paths
+# program search path
 ################################################################################
 
 typeset -gU cdpath fpath mailpath path
-
-#
-# paths searched for manual pages
-#
-
-MANPATH=$HOME/.homebrew/share/man:$MANPATH
 
 #
 # paths searched for programs
@@ -25,15 +19,30 @@ path=(
   $path                   # system defaults
 )
 
+################################################################################
+# manual page search path
+################################################################################
+
 #
-# paths searched to auto-cd into
+# homebrew
 #
 
+MANPATH=$HOME/.homebrew/share/man:$MANPATH
+
+#
+# erlang
+#
+
+MANPATH=$(brew --prefix erlang)/lib/erlang/man:$MANPATH
+
+################################################################################
+# auto `cd` paths
+################################################################################
+
 cdpath=(
-  $HOME
-  $HOME/projects
-  $HOME/projects/active
-  $cdpath
+  $HOME                 # ~/
+  $HOME/projects/active # active projects
+  $cdpath               # default
 )
 
 ################################################################################
