@@ -55,7 +55,7 @@ Bundle "jQuery"
 Bundle "gh:vim-ruby/vim-ruby"
 Bundle "rails.vim"
 Bundle "jnwhiteh/vim-golang"
-"Bundle "tpope/vim-dispatch"
+Bundle "tpope/vim-dispatch"
 "Bundle "airblade/vim-gitgutter"
 Bundle "editorconfig-vim"
 Bundle "epmatsw/ag.vim"
@@ -71,6 +71,7 @@ Bundle "terryma/vim-expand-region"
 Bundle "Tagbar"
 Bundle "michaeljsmith/vim-indent-object"
 Bundle "mru.vim"
+Bundle 'wting/rust.vim'
 "Bundle "mattboehm/vim-unstack"
 
 " Syntax highlight
