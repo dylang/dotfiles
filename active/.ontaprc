@@ -1,18 +1,21 @@
 # taps
 tap homebrew/binary
 tap homebrew/dupes
-tap wilmoore/binaries
 tap josegonzalez/php
+tap wilmoore/binaries
 
 # editor / pager
-install vim
 install macvim
+install vim
 install vimpager
-install ctags
+
+# programming languages
+install erlang
+install rust
 
 # networking
-install ngrep
 install netcat
+install ngrep
 
 # vcs
 install git
@@ -22,9 +25,10 @@ install phantom-js
   
 # utility
 install ag
-install tree
-install wget
-install tmux
-install watch
+install ctags
 install reattach-to-user-namespace
+install tmux
+install tree
+install watch
+install wget
 
