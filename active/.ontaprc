@@ -1,29 +1,81 @@
+#
 # taps
+#
+
 tap homebrew/binary
 tap homebrew/dupes
 tap josegonzalez/php
 tap wilmoore/binaries
 
+#
 # editor / pager
+#
+
 install macvim
 install vim
 install vimpager
 
+#
 # programming languages
+#
+
+# clojure
+install leiningen
+
+# erlang
 install erlang
+
+# groovy
+install groovy
+
+# lua
+install lua
+
+# php
+install php55 --without-pear --without-apache --with-pgsql --with-fpm --with-intl
+unlink  php55
+
+install php54 --without-pear --without-apache --with-pgsql --with-fpm --with-intl
+unlink  php54
+
+install php53 --without-pear --without-apache --with-pgsql --with-fpm --with-intl
+unlink  php53
+
+# ruby
+install ruby-build
+install chruby
+
+# rust
 install rust
 
+# scala
+install scala
+
+#
 # networking
+#
+
 install netcat
 install ngrep
+install nmap
 
+#
 # vcs
-install git
+#
 
+install git
+install mercurial
+
+#
 # binaries
-install phantom-js
+#
+
+install wilmoore/binaries/phantomjs
   
+#
 # utility
+#
+
 install ag
 install ctags
 install reattach-to-user-namespace
@@ -31,4 +83,8 @@ install tmux
 install tree
 install watch
 install wget
+
+# irc / instant message
+install bitlbee
+install znc
 
