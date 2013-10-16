@@ -13,10 +13,10 @@ typeset -gU cdpath fpath mailpath path
 #
 
 path=(
-  /usr/local/{bin,sbin}   # obviously :)
-  $HOME/.homebrew/bin     # homebrew@$HOME
-  /usr/local/heroku/bin   # heroku toolbelt
-  $path                   # system defaults
+  /usr/local/{bin,sbin}       # obviously :)
+  $HOME/.homebrew/{bin,sbin}  # homebrew@$HOME
+  /usr/local/heroku/bin       # heroku toolbelt
+  $path                       # system defaults
 )
 
 ################################################################################
@@ -122,3 +122,13 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
+################################################################################
+# application development variables
+################################################################################
+
+#
+# HNav Client
+# TODO: create an ignored "private" file that is sourced (i.e. should not expose this IP address).
+#
+
+export HNAVC_DEFAULT_QUERYSTRING='profile=dev&service.hydra.rewriteIp=10.243.41.245'
