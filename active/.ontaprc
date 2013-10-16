@@ -8,6 +8,7 @@
 
 tap homebrew/binary
 tap homebrew/dupes
+tap homebrew/versions
 tap josegonzalez/php
 tap wilmoore/binaries
 
@@ -35,6 +36,13 @@ install groovy
 # lua
 install lua
 
+# node
+install node
+unlink  node
+
+install homebrew/versions/node08
+unlink  node08
+
 # php
 install php55 --without-pear --without-apache --with-pgsql --with-fpm --with-intl
 unlink  php55
@@ -46,8 +54,18 @@ install php53 --without-pear --without-apache --with-pgsql --with-fpm --with-int
 unlink  php53
 
 # ruby
-install ruby-build
 install chruby
+
+install ruby
+unlink  ruby
+
+install ruby192
+unlink  ruby192
+
+install ruby193
+unlink  ruby193
+
+install ruby-build
 
 # rust
 install rust
@@ -62,6 +80,7 @@ install scala
 install netcat
 install ngrep
 install nmap
+install tcpdump
 
 #
 # vcs
@@ -76,6 +95,13 @@ install mercurial
 
 install wilmoore/binaries/phantomjs
   
+#
+# databases
+#
+
+install redis
+install riak
+
 #
 # utility
 #
