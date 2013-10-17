@@ -123,6 +123,20 @@ if [[ ! -d "$TMPPREFIX" ]]; then
 fi
 
 ################################################################################
+# git
+################################################################################
+
+# USER SETUP
+export GIT_COMMITTER_NAME="Wil Moore III"
+export GIT_COMMITTER_EMAIL="wil.moore@wilmoore.com"
+export GIT_AUTHOR_NAME="Wil Moore III"
+export GIT_AUTHOR_EMAIL="wil.moore@wilmoore.com"
+
+# github
+export GITHUB_USER='wilmoore'
+export GITHUB_OAUTH_TOKEN=$__PRIVATE_GITHUB_OAUTH_TOKEN
+
+################################################################################
 # application development variables
 ################################################################################
 
