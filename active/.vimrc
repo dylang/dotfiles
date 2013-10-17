@@ -60,7 +60,6 @@ Bundle "gh:vim-ruby/vim-ruby"
 Bundle "rails.vim"
 Bundle "jnwhiteh/vim-golang"
 Bundle "tpope/vim-dispatch"
-Bundle "airblade/vim-gitgutter"
 Bundle "editorconfig-vim"
 Bundle "epmatsw/ag.vim"
 Bundle "pangloss/vim-javascript"
@@ -76,7 +75,7 @@ Bundle "Tagbar"
 Bundle "michaeljsmith/vim-indent-object"
 Bundle "mru.vim"
 Bundle 'wting/rust.vim'
-"Bundle "mattboehm/vim-unstack"
+Bundle "mattboehm/vim-unstack"
 
 " completion
 Bundle 'ervandew/supertab'
@@ -90,7 +89,7 @@ Bundle "fugitive.vim"
 Bundle 'mattn/gist-vim'
 
 " (HT|X)ml tool
-Bundle "ragtag.vim"
+"Bundle "ragtag.vim"
 
 " Utility
 Bundle 'Lokaltog/vim-easymotion'
@@ -118,7 +117,13 @@ vnoremap // :TComment<CR>
 " Navigation
 Bundle "http://github.com/gmarik/vim-visual-star-search.git"
 
-filetype plugin indent on     " required!
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" file type based indentation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" turn on file type based indentation for all file types
+" filetype plugin indent on
+" disabling this until I can get rid of the "Sourcing html indent"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" filetype overrides
