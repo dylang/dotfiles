@@ -37,11 +37,15 @@ Bundle 'gmarik/vundle'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " enable/disable syntax highlighting
+syntax on
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" clipboard
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Use system clipboard
+set clipboard=unnamed
 
 Bundle "YankRing.vim"
 let g:yankring_history_dir = '~/.vim'
@@ -56,7 +60,7 @@ Bundle "gh:vim-ruby/vim-ruby"
 Bundle "rails.vim"
 Bundle "jnwhiteh/vim-golang"
 Bundle "tpope/vim-dispatch"
-"Bundle "airblade/vim-gitgutter"
+Bundle "airblade/vim-gitgutter"
 Bundle "editorconfig-vim"
 Bundle "epmatsw/ag.vim"
 Bundle "pangloss/vim-javascript"
@@ -73,6 +77,9 @@ Bundle "michaeljsmith/vim-indent-object"
 Bundle "mru.vim"
 Bundle 'wting/rust.vim'
 "Bundle "mattboehm/vim-unstack"
+
+" completion
+Bundle 'ervandew/supertab'
 
 " Syntax highlight
 Bundle "Markdown"
@@ -114,11 +121,35 @@ Bundle "http://github.com/gmarik/vim-visual-star-search.git"
 filetype plugin indent on     " required!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" filetype overrides
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd! BufRead,BufNewFile *.jbuilder,Gemfile,Rakefile,Procfile,Guardfile setf ruby
+au BufRead,BufNewFile *.thor set filetype=ruby
+au BufRead,BufNewFile Guardfile set filetype=ruby
+au BufRead,BufNewFile */nginx/*.conf set filetype=nginx
+au BufRead,BufNewFile *.jbuilder setf ruby
+au BufRead,BufNewFile *.jeco setf html
+au BufRead,BufNewFile *.jss set filetype=css
+au BufRead,BufNewFile *.hbs set filetype=mustache
+au BufRead,BufNewFile *.md set filetype=markdown
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" display
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set hlsearch
 set incsearch
+
+" clear last search
+nnoremap <space> :set hlsearch! hlsearch?<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" files, backups and undo
@@ -139,7 +170,7 @@ set ttym=xterm2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" keyboard
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- 
+
 " <Ctrl-C> -- copy selected to system clipboard (see: " http://vim.wikia.com/wiki/Quick_yank_and_paste)
 vmap <C-C> "*y
 
@@ -149,9 +180,12 @@ map <C-A> ggvG$"*y<C-o><C-o>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" formatting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- 
+
 " do not wrap
 set nowrap
+
+" Wrap lines at convenient points
+set linebreak
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" color in terminal
@@ -345,28 +379,36 @@ nmap <Leader>re :e $MYVIMRC<CR>
 
 Bundle 'bling/vim-airline'
 
+" always show status line
 set laststatus=2
 
 let g:airline_powerline_fonts = 1
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Menus
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set wildmenu " show command complition menu
-set wildmode=list:longest,full
-set scrolloff=3 " begin scrolling N lines earlier
+set wildmode=longest,list,full
+
+" show command complition menu (Enable ctrl-n and ctrl-p to scroll thru matches)
+set wildmenu
+
+" stuff to ignore when tab completing
+set wildignore=*.o,*.obj,*~
+set wildignore+=*vim/backups*
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" scrolling
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" begin scrolling N before top/bottom margins
+set scrolloff=0
+set sidescrolloff=15
+set sidescroll=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File types settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set number
-
-"sane editing (tabs)
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-
-" convert all typed tabs to spaces
-set expandtab
 
 " CSS (tab width 2 chr)
 autocmd FileType css set et
@@ -381,6 +423,30 @@ autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" line numbers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" turn on line numbering
+set number
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tabs & indentation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" indent
+set autoindent
+set smartindent
+
+" sane editing (tabs)
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set smarttab
+
+" convert all typed tabs to spaces
+set expandtab
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " sublime (multiple selections) mode
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -391,3 +457,9 @@ autocmd FileType javascript set sts=2
 " https://github.com/terryma/vim-multiple-cursors
 " http://www.youtube.com/watch?v=Umb59mMvCxA
 Bundle "terryma/vim-multiple-cursors"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nerdtree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:NERDTreeWinSize = 40
