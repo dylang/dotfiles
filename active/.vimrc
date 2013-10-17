@@ -153,8 +153,8 @@ set list listchars=tab:\ \ ,trail:·
 set hlsearch
 set incsearch
 
-" clear last search
-nnoremap <space> :set hlsearch! hlsearch?<CR>
+" clear search highlight
+nnoremap <space> :nohlsearch<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" files, backups and undo
@@ -268,9 +268,6 @@ map <leader>pp :setlocal paste!<cr>
 
 " <leader>ss toggles spell checking
 map <leader>ss :setlocal spell!<cr>
-
-" <leader>hh turns off search highlight
-map <leader>hh :noh<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" tabs
