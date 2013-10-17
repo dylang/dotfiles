@@ -21,14 +21,30 @@ install vim
 install vimpager
 
 #
+# programming environment
+#
+
+install apple-gcc42
+install autoconf
+install automake
+install gettext
+install intltool
+
+#
 # programming languages
 #
 
 # clojure
 install leiningen
 
+# dart
+install dart
+
 # erlang
 install erlang
+
+# go
+install go
 
 # groovy
 install groovy
@@ -36,12 +52,18 @@ install groovy
 # lua
 install lua
 
+# mono (.net)
+# https://gist.github.com/shtirlic/4696903
+
 # node
 install node
 unlink  node
 
 install homebrew/versions/node08
 unlink  node08
+
+# ocaml
+install ocaml
 
 # php
 install php55 --without-pear --without-apache --with-pgsql --with-fpm --with-intl
@@ -108,6 +130,7 @@ install riak
 
 install ag
 install ctags
+install pcre
 install reattach-to-user-namespace
 install tmux
 install tree
