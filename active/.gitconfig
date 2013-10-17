@@ -18,196 +18,199 @@
 ############################################################
 
 [user]
-  name              = Wil Moore III
+  name                = Wil Moore III
 
-  email             = wil.moore@wilmoore.com
+  email               = wil.moore@wilmoore.com
 
 [credential]
   # if you install git via homebrew; [you are done](http://git.io/yjOG-Q).
   # if you do not install via homebrew, [there is help for you](http://git.io/dz-m6w)
-  helper            = osxkeychain
+  helper              = osxkeychain
 
 [github]
-  user              = wilmoore
+  user                = wilmoore
 
 [core]
-  bare              = false
+  bare                = false
 
   # use vim as preferred editor and start editing at first line when invoked
-  editor            = vim -pc ':normal gg'
+  editor              = vim -pc ':normal gg'
 
-  excludesfile      = ~/.gitignore
+  excludesfile        = ~/.gitignore
 
-  filemode          = true
+  filemode            = true
 
-  ignorecase        = false
+  ignorecase          = false
 
-  logallrefupdates  = true
+  logallrefupdates    = true
 
-  quotepath         = false
+  quotepath           = false
 
   # Use "less" as the pager...this will provide nice colors
-  pager             = less -R
+  pager               = less -R
 
   # Whitespace problems git should recognize
   # (1) EOL whitespace
   # (2) mixed spaces and tabs
-  whitespace        = trailing-space,space-before-tab
+  whitespace          = trailing-space,space-before-tab
 
 [help]
   # wait .5 seconds before autocorrecting
-  autocorrect       = 5
+  autocorrect         = 5
 
 [grep]
   # show line numbers in grep results
-  lineNumber        = true
+  lineNumber          = true
 
 [color]
-  ui                = true
+  ui                  = true
 
 [branch]
   # automatically link new branch to start-point branch (upstream)
-  autosetupmerge    = true
+  autosetupmerge      = true
 
 [push]
   # Ensure that when you `git push` only the current branch is pushed rather than all branches (why is this not the default?)
-  default           = current
+  default             = current
 
 [rerere]
   # Reuse recorded resolution of conflicted merges:
   # - http://shop.oreilly.com/product/0636920024774.do
   # - http://git-scm.com/2010/03/08/rerere.html
-  enabled           = true
+  enabled             = true
 
 [merge]
   # see: https://git-scm.com/docs/git-merge
-  conflictstyle     = diff3
+  conflictstyle       = diff3
 
-  tool              = Kaleidoscope
+  tool                = Kaleidoscope
 
 [mergetool]
-  keepTemporaries   = false
+  keepTemporaries     = false
 
-  keepBackup        = false
+  keepBackup          = false
 
-  prompt            = false
+  prompt              = false
 
 [mergetool "Kaleidoscope"]
-  cmd               = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  cmd                 = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 
-  trustExitCode     = true
+  trustExitCode       = true
 
 [diff]
-  tool              = Kaleidoscope
+  tool                = Kaleidoscope
 
 [difftool]
-  prompt            = false
+  prompt              = false
 
 [difftool "Kaleidoscope"]
-  cmd               = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd                 = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [alias]
   # locate commit where a particular file was introduced
-  added-file        = log --diff-filter=A --
+  added-file          = log --diff-filter=A --
 
   # list aliases
-  aliases           = !git config --get-regexp '^alias.' | awk -F '[. ]' '{ print $2 }'
+  aliases             = !git config --get-regexp '^alias.' | awk -F '[. ]' '{ print $2 }'
 
   # list git bins (lots of gems in there)
-  bin               = !find $(git --exec-path) -type f | xargs basename | $(git config --get core.pager)
+  bin                 = !find $(git --exec-path) -type f | xargs basename | $(git config --get core.pager)
+
+  # number of commits in this branch
+  branch-commit-count = !git log upstream/master.. --no-merges --format=oneline | wc | awk '{ print $1 }'
 
   # stage and commit given file
-  checkin           = ![[ -z "$*" ]] && echo 'No file name was provided.' 1>&2 && exit 1 || git stage "$*" && git commit $!
+  checkin             = ![[ -z "$*" ]] && echo 'No file name was provided.' 1>&2 && exit 1 || git stage "$*" && git commit $!
 
   # diff current HEAD against master (this is what you want 90% of the time if you work in topic branches)
-  compare           = diff HEAD..master --
+  compare             = diff HEAD..master --
 
   # list "conflicted" files (files containing conflict markers)
-  conflicted        = grep --name-only --full-name '<<<<<<< HEAD'
+  conflicted          = grep --name-only --full-name '<<<<<<< HEAD'
 
   # list contributor stats for this repo
-  contributors      = !git shortlog -n -s --no-merges $@ | cat - && echo && echo total $(git rev-list --count HEAD)
+  contributors        = !git shortlog -n -s --no-merges $@ | cat - && echo && echo total $(git rev-list --count HEAD)
 
   # count modified files
-  count-modified    = !echo $(git status --porcelain | grep -E '[^MARC]' | wc -l | awk '{ print $1 }') files modified
+  count-modified      = !echo $(git status --porcelain | grep -E '[^MARC]' | wc -l | awk '{ print $1 }') files modified
 
   # give someone else credit for a commit
-  credit-author     = !echo '\nPending Commit:\n% git commit -am \"commit message\" --author \"Full Name <name@domain.tld>\"\n\nExisting Commit:\n% git commit --amend --author \"Full Name <name@domain.tld>\" -C HEAD\n'
+  credit-author       = !echo '\nPending Commit:\n% git commit -am \"commit message\" --author \"Full Name <name@domain.tld>\"\n\nExisting Commit:\n% git commit --amend --author \"Full Name <name@domain.tld>\" -C HEAD\n'
 
   # consider a topic branch "finished" by deleting it locally and from your "origin" remote
-  finish            = ![[ -z "$*" ]] && echo 'No branch was provided.' 1>&2 && exit 1 || git branch -d "$*" && git push origin --delete $!
+  finish              = ![[ -z "$*" ]] && echo 'No branch was provided.' 1>&2 && exit 1 || git branch -d "$*" && git push origin --delete $!
 
   # edit your global config
-  edit-config       = config --global -e
+  edit-config         = config --global -e
 
   # open files with conflict markers in your configured editor
-  edit-conflicted   = !$EDITOR $(git grep --name-only --full-name '<<<<<<< HEAD' | awk '{print $NF}')
+  edit-conflicted     = !$EDITOR $(git grep --name-only --full-name '<<<<<<< HEAD' | awk '{print $NF}')
 
   # open modified files in your configured editor
-  edit-modified     = !$EDITOR $(git status --porcelain | grep -E '[^MARC]' | awk '{print $NF}')
+  edit-modified       = !$EDITOR $(git status --porcelain | grep -E '[^MARC]' | awk '{print $NF}')
 
   # group grep search results (much more readable this way)
-  grep-group        = grep --break --heading --line-number
+  grep-group          = grep --break --heading --line-number
 
   # commit history in graph format: abbreviated commits ID, one commit per line + with commit references (like git log --decorate)
-  history           = log --graph --decorate --pretty=oneline --abbrev-commit
+  history             = log --graph --decorate --pretty=oneline --abbrev-commit
 
   # show ignored project files
-  ignored           = !git status --ignored | grep -F 'Ignored files:' -A100
+  ignored             = !git status --ignored | grep -F 'Ignored files:' -A100
 
   # navigate to the JIRA story corresponding to the current branch (`git set-jira-domain your domain` to configure 
-  jira-branch       = !echo 'To set your Jira Server Url: `git config --replace-all jira.serverurl http://...`' && git web--browse $(git config --get jira.serverurl)/browse/$(git name-rev --name-only HEAD)
+  jira-branch         = !echo 'To set your Jira Server Url: `git config --replace-all jira.serverurl http://...`' && git web--browse $(git config --get jira.serverurl)/browse/$(git name-rev --name-only HEAD)
 
   # list commits not yet pushed to remote
-  local             = log --branches --not --remotes
+  local               = log --branches --not --remotes
 
   # show commits where my github user name is the author
-  log-github-user   = !git log --author="$(git config --get github.user)"
+  log-github-user     = !git log --author="$(git config --get github.user)"
 
   # markdown-friendly list of topic/branch related logs (great for Github pull requests)
-  markdown          = !BN=$(git name-rev --name-only HEAD) && git log --no-merges --grep=$BN --pretty=oneline | awk -F"$BN: " '{print \"-\", $NF}' | uniq
+  markdown            = !BN=$(git name-rev --name-only HEAD) && git log --no-merges --grep=$BN --pretty=oneline | awk -F"$BN: " '{print \"-\", $NF}' | uniq
 
   # show branches that have been merged into current (HEAD) branch
-  merged            = !git fetch --all --prune && git branch --all --merged HEAD
+  merged              = !git fetch --all --prune && git branch --all --merged HEAD
 
   # show branches that have not been merged into current (HEAD) branch
-  not-merged        = !git fetch --all --prune && git branch --all --no-merged HEAD
+  not-merged          = !git fetch --all --prune && git branch --all --no-merged HEAD
 
   # navigate to help on installing `git-credential-osxkeychain`
-  osxkeychain-help  = web--browse http://git.io/dz-m6w
+  osxkeychain-help    = web--browse http://git.io/dz-m6w
 
   # terminal tab reflecting your current git project name (https://gist.github.com/3874729)
-  project-name      = config --replace-all project.info.name
+  project-name        = config --replace-all project.info.name
 
   # github style pull request against origin regarding current branch (FYI, make sure you are using an `https` origin url; otherwise, this won't work)
-  pr                = !git sync && git web--browse $(git config --get remote.origin.url | sed 's/.git$//')/pull/new/$(git name-rev --name-only HEAD)
+  pr                  = !git sync && git web--browse $(git config --get remote.origin.url | sed 's/.git$//')/pull/new/$(git name-rev --name-only HEAD)
 
   # stage file after resolving a merge conflict (like svn, hg)
-  resolve           = stage --
+  resolve             = stage --
 
   # stage all outstanding changes found within the entire project
-  stage-everything  = add --all :/
+  stage-everything    = add --all :/
 
   # a more convenient way to say `git sync-rebase`
-  sync              = !git sync-rebase
+  sync                = !git sync-rebase
 
   # fetch and rebase, first from origin/HEAD, then from upstream/HEAD; finally, push (force) to origin/HEAD
-  sync-rebase       = !git pull --rebase --ff origin HEAD && git pull --rebase --ff upstream master && git push -u origin +HEAD
+  sync-rebase         = !git pull --rebase --ff origin HEAD && git pull --rebase --ff upstream master && git push -u origin +HEAD
 
   # same as `git sync`; however, do not rebase and does not force push
-  sync-no-rebase    = !git pull --no-rebase --ff origin HEAD && git pull --no-rebase --ff upstream master && git push -u origin HEAD
+  sync-no-rebase      = !git pull --no-rebase --ff origin HEAD && git pull --no-rebase --ff upstream master && git push -u origin HEAD
 
   # decorated graph view of one liner summarized commits from all branches. (inspired by git-extras)
-  tree              = log --all --graph --decorate --oneline --simplify-by-decoration
+  tree                = log --all --graph --decorate --oneline --simplify-by-decoration
 
   # undo local changes
-  undo              = checkout --
+  undo                = checkout --
 
   # remove staged changes from the index: (1) provide file name/pattern (2) otherwise, removes all
-  unstage           = reset HEAD --
+  unstage             = reset HEAD --
 
   # list untracked files
-  untracked         = ls-files -o
+  untracked           = ls-files -o
 
 ############################################################
 # changelog
