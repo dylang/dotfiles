@@ -11,6 +11,62 @@ tap homebrew/dupes
 tap homebrew/versions
 tap josegonzalez/php
 tap wilmoore/binaries
+tap phinze/cask
+
+#
+# homebrew external commands
+#
+
+install brew-cask
+
+#
+# GUI Mac applications (free)
+#
+
+cask-install calibre
+cask-install cheat-sheet
+# cask-install cloudup (create if it does not exist)
+cask-install colors
+cask-install cord
+cask-install cyberduck
+# cask-install dropbox (need to uninstall manually installed first)
+cask-install firefox
+cask-install google-drive
+cask-install gpgtools
+cask-install growlnotify
+cask-install handbrake
+cask-install heroku-toolbelt
+cask-install imageoptim
+cask-install inkscape
+cask-install lime-chat
+cask-install mysql-workbench
+cask-install node-webkit
+cask-install opera
+cask-install pgadmin3
+cask-install postgres
+cask-install robomongo
+cask-install screenhero
+cask-install sequel-pro
+cask-install sourcetree
+cask-install spotify
+cask-install vagrant
+cask-install virtualbox
+
+#
+# GUI Mac applications (app store and/or non-free)
+# REVIEW EACH BEFORE INSTALLING
+#
+
+# cask-install alfred (automate license install)
+# cask-install chromium
+# cask-install evernote (automate license install)
+# cask-install google-chrome (first, uninstall current chrome)
+# cask-install kaleidoscope (automate license install)
+# cask-install mailplane (automate license install)
+# cask-install marked2 (automate license install)
+# cask-install one-password (automate license install)
+# cask-install size-up (automate license install)
+# cask-install xscope (automate license install)
 
 #
 # editor / pager
@@ -42,12 +98,17 @@ install dart
 
 # erlang
 install erlang
+install elixir
+install expm
 
 # go
 install go
 
 # groovy
 install groovy
+
+# haskell
+install haskell-platform
 
 # lua
 install lua
@@ -99,6 +160,7 @@ install scala
 # networking
 #
 
+install fping
 install netcat
 install ngrep
 install nmap
@@ -141,3 +203,9 @@ install wget
 install bitlbee
 install znc
 
+#
+# documentation
+#
+
+# zsh
+install zsh-lovers.rb
