@@ -193,6 +193,11 @@ map <C-A> ggvG$"*y<C-o><C-o>
 "" formatting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" unix line endings (why would you not?)
+if &modifiable
+  set ff=unix
+endif
+
 " do not wrap
 set nowrap
 
