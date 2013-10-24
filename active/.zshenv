@@ -145,4 +145,19 @@ export GITHUB_OAUTH_TOKEN=$__PRIVATE_GITHUB_OAUTH_TOKEN
 # TODO: create an ignored "private" file that is sourced (i.e. should not expose this IP address).
 #
 
-export HNAVC_DEFAULT_QUERYSTRING='profile=dev&service.hydra.rewriteIp=10.243.41.245'
+# if this is set, always use; otherwise, look up port using nmap (i.e. some people have a standing apache server for whatever reason; some people use the portable NodeJS server -- these tend to have different base paths)
+export HNAVC_DEVELOPER_SERVERURL='http://192.168.0.36:8000'
+
+# required by scripts that need to lookup STB IP address
+export HNAVC_IP805STB_MACADDRESS='B0:77:AC:2F:9F:62'
+
+# required by scripts that need to connect to hydra remotely (bin/client will open desktop
+# `bin/client --local`          (default)
+# `bin/client --remote`         (adds `rewriteIp`)
+# `bin/client --only-desktop`   (only open client on desktop)
+# `bin/client --only-stb`       (only open client on STB)
+export HNAVC_HYDRA_WAN_IPADDRESS='10.243.41.245'
+
+# set this when you want scripts that generate client urls to append something to the query string
+export HNAVC_DEFAULT_QUERYSTRING='feature.whatever=true'
+
