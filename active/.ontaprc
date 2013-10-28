@@ -31,7 +31,6 @@ cask-install cord
 cask-install cyberduck
 cask-install firefox
 cask-install google-drive
-cask-install gpgtools
 cask-install growlnotify
 cask-install handbrake
 cask-install heroku-toolbelt
@@ -208,4 +207,5 @@ install znc
 #
 
 # zsh
-install zsh-lovers.rb
+install zsh-lovers
+
