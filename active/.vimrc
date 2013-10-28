@@ -55,27 +55,28 @@ let g:yankring_history_dir = '~/.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Programming
-Bundle "jQuery"
-Bundle "gh:vim-ruby/vim-ruby"
-Bundle "rails.vim"
-Bundle "jnwhiteh/vim-golang"
-Bundle "tpope/vim-dispatch"
-Bundle "editorconfig-vim"
-Bundle "epmatsw/ag.vim"
-Bundle "pangloss/vim-javascript"
-Bundle "kchmck/vim-coffee-script"
-Bundle "mmalecki/vim-node.js"
-Bundle "JavaScript-Indent"
-Bundle "jelera/vim-javascript-syntax"
-Bundle "tpope/vim-eunuch"
-Bundle "skammer/vim-css-color"
-Bundle "groenewege/vim-less"
-Bundle "terryma/vim-expand-region"
-Bundle "Tagbar"
-Bundle "michaeljsmith/vim-indent-object"
-Bundle "mru.vim"
+Bundle 'jQuery'
+Bundle 'gh:vim-ruby/vim-ruby'
+Bundle 'rails.vim'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'tpope/vim-dispatch'
+Bundle 'editorconfig-vim'
+Bundle 'epmatsw/ag.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'mmalecki/vim-node.js'
+Bundle 'JavaScript-Indent'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'tpope/vim-eunuch'
+Bundle 'skammer/vim-css-color'
+Bundle 'groenewege/vim-less'
+Bundle 'terryma/vim-expand-region'
+Bundle 'Tagbar'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'mru.vim'
 Bundle 'wting/rust.vim'
-Bundle "mattboehm/vim-unstack"
+Bundle 'mattboehm/vim-unstack'
+Bundle 'oscarh/vimerl'
 
 " completion
 Bundle 'ervandew/supertab'
@@ -116,13 +117,26 @@ Bundle "nginx.vim"
 Bundle "L9"
 Bundle "FuzzyFinder"
 
-" tComment
-Bundle "tComment"
-nnoremap // :TComment<CR>
-vnoremap // :TComment<CR>
-
 " Navigation
 Bundle "http://github.com/gmarik/vim-visual-star-search.git"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" commenting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" auto-comment
+:set formatoptions+=ro
+
+"
+" tComment
+"
+
+" install
+Bundle "tComment"
+
+" key bindings
+nnoremap // :TComment<CR>
+vnoremap // :TComment<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" file type based indentation

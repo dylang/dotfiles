@@ -25,11 +25,10 @@ install brew-cask
 
 cask-install calibre
 cask-install cheat-sheet
-# cask-install cloudup (create if it does not exist)
+cask-install cloudup
 cask-install colors
 cask-install cord
 cask-install cyberduck
-# cask-install dropbox (need to uninstall manually installed first)
 cask-install firefox
 cask-install google-drive
 cask-install gpgtools
@@ -58,15 +57,15 @@ cask-install virtualbox
 #
 
 # cask-install alfred (automate license install)
-# cask-install chromium
+cask-install chromium
 # cask-install evernote (automate license install)
-# cask-install google-chrome (first, uninstall current chrome)
+cask-install google-chrome (first, uninstall current chrome)
 # cask-install kaleidoscope (automate license install)
 # cask-install mailplane (automate license install)
-# cask-install marked2 (automate license install)
+cask-install marked2 (automate license install)
 # cask-install one-password (automate license install)
 # cask-install size-up (automate license install)
-# cask-install xscope (automate license install)
+cask-install xscope (automate license install)
 
 #
 # editor / pager
@@ -99,7 +98,8 @@ install dart
 # erlang
 install erlang
 install elixir
-install expm
+install rebar
+install wilmoore/binaries/expm
 
 # go
 install go
@@ -178,7 +178,7 @@ install mercurial
 #
 
 install wilmoore/binaries/phantomjs
-  
+
 #
 # databases
 #
