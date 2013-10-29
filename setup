@@ -1,13 +1,13 @@
 ################################################################################
 # Install dotfiles
 # Wil Moore III <wil.moore@wilmoore.com>
-# 
-# Tasks: 
+#
+# Tasks:
 #
 #  - clone dotfiles repo
 #  - locate and link linkable files, make backups for existing, non-link files
 #  - setup prezto (assume prezto configuration files are linked with dotfiles)
-# 
+#
 # This is meant to be invoked via:
 # bash < <(curl -s https://raw.github.com/wilmoore/dotfiles/master/setup)
 ################################################################################
@@ -74,15 +74,15 @@ say "Preparing to clone dotfiles..."
 
 if [[ -d $DOTFILES_ROOT_PATH ]]; then
   say "dotfiles directory exists; preparing to update [$DOTFILES_ROOT_PATH]"
-  
+
   cd $DOTFILES_ROOT_PATH || fail "command failed: [cd $DOTFILES_ROOT_PATH]...aborting!"
-  
+
   say "current directory: $(pwd)"
-  
+
   git pull 2>/dev/null || fail "command failed: [git pull]...aborting!"
-  
+
   cd -
-  
+
   say "dotfiles repository successfully updated"
 else
   git clone --recursive $DOTFILES_CLONE_URL $DOTFILES_ROOT_PATH || fail "unable to clone dotfiles"
@@ -119,7 +119,7 @@ done
 # setup prezto (assume prezto configuration files are linked with dotfiles)
 #
 # Links:
-# 
+#
 #  - http://blog.jr0cket.co.uk/2013/09/hey-prezto-zsh-for-command-line-heaven.html
 #  - https://github.com/sorin-ionescu/prezto
 ################################################################################
@@ -160,7 +160,7 @@ else
 fi
 
 ################################################################################
-# Ensure proper permissions for ssh files and folders.
+# ensure proper permissions for ssh files and folders.
 ################################################################################
 
 SSH_PATH=$HOME/.ssh
