@@ -58,13 +58,13 @@ cask-install virtualbox
 # cask-install alfred (automate license install)
 cask-install chromium
 # cask-install evernote (automate license install)
-cask-install google-chrome (first, uninstall current chrome)
+cask-install google-chrome
 # cask-install kaleidoscope (automate license install)
 # cask-install mailplane (automate license install)
-cask-install marked2 (automate license install)
+cask-install marked2
 # cask-install one-password (automate license install)
-# cask-install size-up (automate license install)
-cask-install xscope (automate license install)
+cask-install size-up
+cask-install xscope
 
 #
 # editor / pager

@@ -13,10 +13,10 @@ typeset -gU cdpath fpath mailpath path
 #
 
 path=(
-  /usr/local/{bin,sbin}       # obviously :)
-  $HOME/.homebrew/{bin,sbin}  # homebrew@$HOME
-  /usr/local/heroku/bin       # heroku toolbelt
-  $path                       # system defaults
+  /usr/local/{bin,sbin}      # obviously :)
+  $HOME/.homebrew/{bin,sbin} # homebrew@$HOME
+  $HOME/.local/bin           # custom binaries & scripts
+  $path                      # system defaults
 )
 
 ################################################################################
@@ -156,7 +156,7 @@ export GITHUB_OAUTH_TOKEN=$__PRIVATE_GITHUB_OAUTH_TOKEN
 #
 
 # if this is set, always use; otherwise, look up port using nmap (i.e. some people have a standing apache server for whatever reason; some people use the portable NodeJS server -- these tend to have different base paths)
-export HNAVC_DEVELOPER_SERVERURL='http://192.168.0.36:8000'
+export HNAVC_DEVELOPER_SERVERURL='http://192.168.0.36:8800'
 
 # required by scripts that need to lookup STB IP address
 export HNAVC_IP805STB_MACADDRESS='B0:77:AC:2F:9F:62'
@@ -169,5 +169,5 @@ export HNAVC_IP805STB_MACADDRESS='B0:77:AC:2F:9F:62'
 export HNAVC_HYDRA_WAN_IPADDRESS='10.243.41.245'
 
 # set this when you want scripts that generate client urls to append something to the query string
-export HNAVC_DEFAULT_QUERYSTRING='feature.whatever=true'
+# export HNAVC_DEFAULT_QUERYSTRING='feature.startOverDelay=false'
 
