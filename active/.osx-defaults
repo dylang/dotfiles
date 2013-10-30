@@ -6,7 +6,7 @@
 #
 
 # guard from doing this more than once
-[[ -f $HOME/.done/osx-defaults ]] && return
+[[ -f $HOME/.runonce/$(basename $0) ]] && return
 
 ###############################################################################
 # System
@@ -289,6 +289,6 @@ open -a "Sizeup"
 # done
 ###############################################################################
 
-mkdir -p $HOME/.done
-date -u +'%Y%m%dT%H%M%SZ' > $HOME/.done/osx-defaults
+mkdir -p $HOME/.runonce
+date -u +'%Y%m%dT%H%M%SZ' > $HOME/.runonce/$(basename $0)
 
