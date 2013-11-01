@@ -170,6 +170,9 @@
   # markdown-friendly list of topic/branch related logs (great for Github pull requests)
   markdown            = !BN=$(git name-rev --name-only HEAD) && git log --no-merges --grep=$BN --pretty=oneline | awk -F"$BN: " '{print \"-\", $NF}' | uniq
 
+  # backup topic branch, `merge --squash` topic branch
+  squash              = !TB=$(git name-rev --name-only HEAD) && BB=__SQUASH_BACKUP_$TB && git branch -M $TB $BB && git fetch upstream master && git checkout -b $TB upstream/master && git merge --squash $BB
+
   # show branches that have been merged into current (HEAD) branch
   merged              = !git fetch --all --prune && git branch --all --merged HEAD
 
