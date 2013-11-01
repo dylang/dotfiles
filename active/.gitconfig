@@ -9,7 +9,7 @@
 # where one alias references another.
 #
 # Always up-to-date @:
-# - http://git.io/gopyOg (https://gist.github.com/4179015)
+# - http://git.io/zuH1MQ
 #
 # For further inspiration, see:
 # - http://git.io/kELRRA
@@ -170,9 +170,6 @@
   # markdown-friendly list of topic/branch related logs (great for Github pull requests)
   markdown            = !BN=$(git name-rev --name-only HEAD) && git log --no-merges --grep=$BN --pretty=oneline | awk -F"$BN: " '{print \"-\", $NF}' | uniq
 
-  # backup topic branch, `merge --squash` topic branch
-  squash              = !TB=$(git name-rev --name-only HEAD) && BB=__SQUASH_BACKUP_$TB && git branch -M $TB $BB && git fetch upstream master && git checkout -b $TB upstream/master && git merge --squash $BB
-
   # show branches that have been merged into current (HEAD) branch
   merged              = !git fetch --all --prune && git branch --all --merged HEAD
 
@@ -190,6 +187,9 @@
 
   # stage file after resolving a merge conflict (like svn, hg)
   resolve             = stage --
+
+  # backup then `git merge --squash` current branch
+  squash              = !TB=$(git name-rev --name-only HEAD) && BB=__SQUASH_BACKUP_$TB && git branch -M $TB $BB && git fetch upstream master && git checkout -b $TB upstream/master && git merge --squash $BB
 
   # stage all outstanding changes found within the entire project
   stage-everything    = add --all :/
@@ -215,40 +215,3 @@
   # list untracked files
   untracked           = ls-files -o
 
-############################################################
-# changelog
-#
-# **2013.10.07**
-# - changed my mind yet again about `sync`, `sync-rebase`, and `sync-no-rebase`.
-#
-## **2013.08.31**
-# - add `conflicted` and `edit-conflicted`.
-#
-# **2013.08.13**
-# - add `grep-group` to group grep search results.
-# - default `git grep` to show line number.
-#
-# **2013.08.06**
-# - add `jira-branch` to jump to a JIRA story of the same
-#   name as the current branch.
-#
-# **2013.08.02**
-# - add `count-modified` to list # of modified files.
-#
-## **2013.08.01**
-# - add `osxkeychain-help` which navigates to help page
-#   detailing installation of 'git-credential-osxkeychain'
-#
-# **2013.07.19**
-# - add `--prune` to `merged` and `not-merged` aliases
-#
-# **2013.07.18**
-# - add `edit-modified` alias
-#
-# **2013.06.10**
-# - add documentation link for `osxkeychain`
-# - remove `start` alias
-#
-# **2013.06.10**
-# - add `git start` alias as a complement to `git finish`
-############################################################
