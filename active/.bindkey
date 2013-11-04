@@ -1,0 +1,8 @@
+#
+# enable 'history-incremental-search-backward' (Control-R) even in vi mode
+# http://zshwiki.org/home/zle/bindkeys
+#
+
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
+

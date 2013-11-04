@@ -24,6 +24,9 @@ fi
 # aliases
 source $HOME/.aliases
 
+# keybindings
+source $HOME/.bindkey
+
 # ontap
 source $HOME/projects/active/ontap/ontap.sh
 
@@ -43,3 +46,4 @@ source ~/projects/active/php-version/php-version.sh && php-version 5
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
