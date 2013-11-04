@@ -173,10 +173,11 @@ install git
 install mercurial
 
 #
-# binaries
+# web browsers
 #
 
-install wilmoore/binaries/phantomjs
+# finally this has been bottled
+install phantomjs
 
 #
 # databases

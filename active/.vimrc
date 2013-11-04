@@ -76,7 +76,11 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'mru.vim'
 Bundle 'wting/rust.vim'
 Bundle 'mattboehm/vim-unstack'
-Bundle 'oscarh/vimerl'
+Bundle 'jimenezrick/vimerl'
+
+" shell
+Bundle 'shougo/vimproc'
+Bundle 'shougo/vimshell'
 
 " completion
 Bundle 'ervandew/supertab'

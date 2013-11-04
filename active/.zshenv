@@ -155,6 +155,9 @@ export GITHUB_OAUTH_TOKEN=$__PRIVATE_GITHUB_OAUTH_TOKEN
 # TODO: create an ignored "private" file that is sourced (i.e. should not expose this IP address).
 #
 
+# if set, this is the browser that will be launched
+export HNAVC_DEFAULT_WEB_BROWSER='Google Chrome'
+
 # if this is set, always use; otherwise, look up port using nmap (i.e. some people have a standing apache server for whatever reason; some people use the portable NodeJS server -- these tend to have different base paths)
 export HNAVC_DEVELOPER_SERVERURL='http://192.168.0.36:8800'
 
