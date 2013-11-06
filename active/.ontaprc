@@ -45,6 +45,7 @@ cask-install postgres
 cask-install robomongo
 cask-install screenhero
 cask-install sequel-pro
+cask-install skype
 cask-install sourcetree
 cask-install spotify
 cask-install vagrant

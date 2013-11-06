@@ -78,15 +78,17 @@ Bundle 'wting/rust.vim'
 Bundle 'mattboehm/vim-unstack'
 Bundle 'jimenezrick/vimerl'
 
+" Markdown
+Bundle "Markdown"
+Bundle 'itspriddle/vim-marked'
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " shell
 Bundle 'shougo/vimproc'
 Bundle 'shougo/vimshell'
 
 " completion
 Bundle 'ervandew/supertab'
-
-" Syntax highlight
-Bundle "Markdown"
 
 " Git integration
 Bundle "git.zip"
@@ -162,7 +164,6 @@ au BufRead,BufNewFile *.jbuilder setf ruby
 au BufRead,BufNewFile *.jeco setf html
 au BufRead,BufNewFile *.jss set filetype=css
 au BufRead,BufNewFile *.hbs set filetype=mustache
-au BufRead,BufNewFile *.md set filetype=markdown
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" display
