@@ -186,6 +186,7 @@ install phantomjs
 
 install redis
 install riak
+install sqlite3
 
 #
 # utility
