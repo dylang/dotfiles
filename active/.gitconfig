@@ -71,6 +71,7 @@
 
 [push]
   # Ensure that when you `git push` only the current branch is pushed rather than all branches (why is this not the default?)
+  # NOTE: The default in Git 2.x is 'simple'
   default             = current
 
 [rerere]

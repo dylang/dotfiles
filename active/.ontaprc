@@ -167,6 +167,12 @@ install nmap
 install tcpdump
 
 #
+# security / privacy
+#
+
+install fail2ban
+
+#
 # vcs
 #
 
@@ -194,6 +200,7 @@ install sqlite3
 
 install ag
 install ctags
+install lnav
 install pcre
 install reattach-to-user-namespace
 install tmux

@@ -155,7 +155,7 @@ export GITHUB_OAUTH_TOKEN=$__PRIVATE_GITHUB_OAUTH_TOKEN
 # TODO: create an ignored "private" file that is sourced (i.e. should not expose this IP address).
 #
 
-# if set, this is the browser that will be launched
+# when set,  grunt/make tasks that open a web browser, will use this instead of system default browser
 export HNAVC_DEFAULT_WEB_BROWSER='Google Chrome'
 
 # if this is set, always use; otherwise, look up port using nmap (i.e. some people have a standing apache server for whatever reason; some people use the portable NodeJS server -- these tend to have different base paths)

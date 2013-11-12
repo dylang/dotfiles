@@ -15,3 +15,9 @@ alias zless=$PAGER
 
 # update vundle bundles
 alias vundle.update='vim +BundleInstall! +BundleClean +qall'
+
+################################################################################
+# utilities
+################################################################################
+
+alias clear-logs='sudo rm -rf /private/var/log/asl/*.asl'
